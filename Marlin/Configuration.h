@@ -446,11 +446,11 @@
 //#define TEMP_SENSOR_1_AS_REDUNDANT
 #define MAX_REDUNDANT_TEMP_SENSOR_DIFF 10
 
-#define TEMP_RESIDENCY_TIME         10  // (seconds) Time to wait for hotend to "settle" in M109
+#define TEMP_RESIDENCY_TIME         5  // (seconds) Time to wait for hotend to "settle" in M109
 #define TEMP_WINDOW                  1  // (°C) Temperature proximity for the "temperature reached" timer
 #define TEMP_HYSTERESIS              3  // (°C) Temperature proximity considered "close enough" to the target
 
-#define TEMP_BED_RESIDENCY_TIME     10  // (seconds) Time to wait for bed to "settle" in M190
+#define TEMP_BED_RESIDENCY_TIME     5  // (seconds) Time to wait for bed to "settle" in M190
 #define TEMP_BED_WINDOW              1  // (°C) Temperature proximity for the "temperature reached" timer
 #define TEMP_BED_HYSTERESIS          3  // (°C) Temperature proximity considered "close enough" to the target
 
@@ -838,7 +838,7 @@
  */
 //#define DEFAULT_MAX_FEEDRATE       { 500,  500,  5,   25 }
 //#define DEFAULT_MAX_FEEDRATE       { 1000, 1000, 170, 5000 }
-#define DEFAULT_MAX_FEEDRATE         { 300,  300,  5,   50 }
+#define DEFAULT_MAX_FEEDRATE         { 250,  250,  17,   250 }
 
 
 //#define LIMITED_MAX_FR_EDITING        // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2
@@ -857,7 +857,7 @@
  */
 //#define DEFAULT_MAX_ACCELERATION      { 500, 500, 100, 5000 }
 //#define DEFAULT_MAX_ACCELERATION      { 700, 700, 100, 5000 }
-#define DEFAULT_MAX_ACCELERATION        { 2500, 2500, 100, 9999 }
+#define DEFAULT_MAX_ACCELERATION        { 3500, 3500, 250, 9999 }
 
 //#define LIMITED_MAX_ACCEL_EDITING     // Limit edit via M201 or LCD to DEFAULT_MAX_ACCELERATION * 2
 #if ENABLED(LIMITED_MAX_ACCEL_EDITING)
@@ -878,9 +878,9 @@
 //#define DEFAULT_ACCELERATION          700    // X, Y, Z and E acceleration for printing moves
 //#define DEFAULT_RETRACT_ACCELERATION  700    // E acceleration for retracts
 //#define DEFAULT_TRAVEL_ACCELERATION   700    // X, Y, Z acceleration for travel (non printing) moves
-#define DEFAULT_ACCELERATION          3000    // X, Y, Z and E acceleration for printing moves
-#define DEFAULT_RETRACT_ACCELERATION  3000    // E acceleration for retracts
-#define DEFAULT_TRAVEL_ACCELERATION   3000    // X, Y, Z acceleration for travel (non printing) moves
+#define DEFAULT_ACCELERATION          2500    // X, Y, Z and E acceleration for printing moves
+#define DEFAULT_RETRACT_ACCELERATION  2500    // E acceleration for retracts
+#define DEFAULT_TRAVEL_ACCELERATION   3500    // X, Y, Z acceleration for travel (non printing) moves
 
 
 
@@ -1632,7 +1632,7 @@
 
 // Homing speeds (mm/min)
 //#define HOMING_FEEDRATE_MM_M { (50*60), (50*60), (4*60) }
-#define HOMING_FEEDRATE_MM_M { (75*60), (75*60), (7*60) }
+#define HOMING_FEEDRATE_MM_M { (90*60), (90*60), (15*60) }
 
 // Validate that endstops are triggered on homing moves
 #define VALIDATE_HOMING_ENDSTOPS
@@ -1820,7 +1820,7 @@
  *   Caveats: The ending Z should be the same as starting Z.
  * Attention: EXPERIMENTAL. G-code arguments may change.
  */
-//#define NOZZLE_CLEAN_FEATURE
+#define NOZZLE_CLEAN_FEATURE
 
 #if ENABLED(NOZZLE_CLEAN_FEATURE)
   // Default number of pattern repetitions

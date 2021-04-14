@@ -35,20 +35,27 @@
 
 /*******************************************************************************************************
  * Vx  mm/dd/YYYY HH:MM 24HR
-
- * V29 xx/xx/2021 xx:xx
- *
+ * 
+ * V29 04/11/2021 09:55
+ *      UPDATES: MARLIN upstream bugfix-2.0.x  04/11/2021
+ *      #define HOMING_FEEDRATE_MM_M { (90*60), (90*60), (15*60) }
+ *      #define MANUAL_FEEDRATE { 100*60, 100*60, 15*60, 2*60 } // (mm/min) Feedrates for manual moves along X, Y, Z, E from panel
+ *      #define ADAPTIVE_STEP_SMOOTHING
+ *      #define MIN_ARC_SEGMENTS       30 // Minimum number of segments in a complete circle
+ *      #define ADVANCED_OK
+ *      #define LIN_ADVANCE_K 0.02    (M900)
+ * 
  * V28 02/21/2021 09:46
  *      TUNING: SETTINGS:XFER:
  *          M301 P22.43 I2.20 D57.09
  *          M304 P206.21 I40.19 D705.45
  *          M92 X80.29 Y80.29 Z400.00 E95.00
- *          #define DEFAULT_MAX_FEEDRATE         { 300,  300,  5,   50 }
+ *          #define DEFAULT_MAX_FEEDRATE            { 300,  300,  5,   50 }
  *          #define DEFAULT_MAX_ACCELERATION        { 2500, 2500, 100, 9999 }
- *          #define DEFAULT_ACCELERATION          3000    // X, Y, Z and E acceleration for printing moves
- *          #define DEFAULT_RETRACT_ACCELERATION  3000    // E acceleration for retracts
- *          #define DEFAULT_TRAVEL_ACCELERATION   3000    // X, Y, Z acceleration for travel (non printing) moves
- *          #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80.29, 80.29, 400, 95.00 } 
+ *          #define DEFAULT_ACCELERATION            3000    // X, Y, Z and E acceleration for printing moves
+ *          #define DEFAULT_RETRACT_ACCELERATION    3000    // E acceleration for retracts
+ *          #define DEFAULT_TRAVEL_ACCELERATION     3000    // X, Y, Z acceleration for travel (non printing) moves
+ *          #define DEFAULT_AXIS_STEPS_PER_UNIT     { 80.29, 80.29, 400, 95.00 } 
  *          M906 X708 Y708 Z900  
  *          M906 T0 E708
  *          M900 K0.04
