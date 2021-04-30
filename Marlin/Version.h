@@ -36,9 +36,10 @@
 /*******************************************************************************************************
  * Vx  mm/dd/YYYY HH:MM 24HR
  * 
- * V30 04/30/2021 08:18
+ * V30 04/30/2021 08:50
  *      UPDATES: MARLIN upstream bugfix-2.0.x  04/30/2021
  *      FIRMWARE RELEASE 2.0.8.0
+ *      #define LIN_ADVANCE_K 0.00    (M900)
  * 
  * V29 04/11/2021 09:55
  *      UPDATES: MARLIN upstream bugfix-2.0.x  04/11/2021
