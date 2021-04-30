@@ -25,9 +25,9 @@
  * Marlin bugfix-2.0.x
  * Compiled version identifier
  ************************************/
-#define COMPILE_VERSION "29" 
+#define COMPILE_VERSION "30" 
 
-#define SHORT_BUILD_VERSION "bugfix-2.0.7.2-" COMPILE_VERSION
+#define SHORT_BUILD_VERSION "bugfix-2.0.8.0-" COMPILE_VERSION
 #define STRING_CONFIG_H_AUTHOR "(JAM)" // Who made the changes.
 #define MACHINE_NAME "SKR Mini-E3-V2"
 #define CUSTOM_MACHINE_NAME "3863 CR-10S"
@@ -35,6 +35,10 @@
 
 /*******************************************************************************************************
  * Vx  mm/dd/YYYY HH:MM 24HR
+ * 
+ * V30 05/30/2021 08:22
+ *      UPDATES: MARLIN upstream bugfix-2.0.x  05/30/2021
+ *      FIRMWARE RELEASE 2.0.8.0
  * 
  * V29 04/11/2021 09:55
  *      UPDATES: MARLIN upstream bugfix-2.0.x  04/11/2021
