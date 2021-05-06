@@ -25,7 +25,7 @@
  * Marlin bugfix-2.0.x
  * Compiled version identifier
  ************************************/
-#define COMPILE_VERSION "30" 
+#define COMPILE_VERSION "31" 
 
 #define SHORT_BUILD_VERSION "bugfix-2.0.8.0-" COMPILE_VERSION
 #define STRING_CONFIG_H_AUTHOR "(JAM)" // Who made the changes.
@@ -36,8 +36,24 @@
 /*******************************************************************************************************
  * Vx  mm/dd/YYYY HH:MM 24HR
  * 
- * V31 xx/xx/2021 xx:xx
- *      UPDATES: MARLIN upstream bugfix-2.0.x  xx/xx/2021
+ * V31 05/06/2021 09:20
+ * 
+ *      UPDATES: MARLIN upstream bugfix-2.0.x  05/06/2021
+ *      REMOVED: // #define PRINTER_EVENT_LEDS
+ *      REMOVED: // define SQUARE_WAVE_STEPPING
+ *      CHANGED:
+ *      #define DEFAULT_AXIS_STEPS_PER_UNIT     { 80.20, 80.29, 400, 95.00 }    // 05/06/2021
+ *      #define DEFAULT_MAX_FEEDRATE            { 200,  200,  15,   250 }
+ *      #define DEFAULT_MAX_ACCELERATION        { 3500, 3500, 250, 9999 }
+ *      #define DEFAULT_ACCELERATION          2500    // X, Y, Z and E acceleration for printing moves
+ *      #define DEFAULT_RETRACT_ACCELERATION  2500    // E acceleration for retracts
+ *      #define DEFAULT_TRAVEL_ACCELERATION   3000    // X, Y, Z acceleration for travel (non printing) moves
+ *          #define E0_CURRENT      840
+ *          #define Z_CURRENT       970
+ *          #define Y_CURRENT       850
+ *              #define Y_CURRENT_HOME  (Y_CURRENT/2)
+ *          #define X_CURRENT       850  
+ *              #define X_CURRENT_HOME  (X_CURRENT/2)
  * 
  * V30 04/30/2021 08:50
  *      UPDATES: MARLIN upstream bugfix-2.0.x  04/30/2021

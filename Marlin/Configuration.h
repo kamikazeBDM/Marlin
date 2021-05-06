@@ -829,7 +829,7 @@
 
 //#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 500 }
 //#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80.20, 80.35, 400, 95.00 }
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80.29, 80.29, 400, 95.00 }    // 02/21/2021
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80.20, 80.29, 400, 95.00 }    // 05/06/2021
 
 /**
  * Default Max Feed Rate (mm/s)
@@ -838,7 +838,7 @@
  */
 //#define DEFAULT_MAX_FEEDRATE       { 500,  500,  5,   25 }
 //#define DEFAULT_MAX_FEEDRATE       { 1000, 1000, 170, 5000 }
-#define DEFAULT_MAX_FEEDRATE         { 250,  250,  17,   250 }
+#define DEFAULT_MAX_FEEDRATE         { 200,  200,  15,   250 }
 
 
 //#define LIMITED_MAX_FR_EDITING        // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2
@@ -880,7 +880,7 @@
 //#define DEFAULT_TRAVEL_ACCELERATION   700    // X, Y, Z acceleration for travel (non printing) moves
 #define DEFAULT_ACCELERATION          2500    // X, Y, Z and E acceleration for printing moves
 #define DEFAULT_RETRACT_ACCELERATION  2500    // E acceleration for retracts
-#define DEFAULT_TRAVEL_ACCELERATION   3500    // X, Y, Z acceleration for travel (non printing) moves
+#define DEFAULT_TRAVEL_ACCELERATION   3000    // X, Y, Z acceleration for travel (non printing) moves
 
 
 
@@ -2775,7 +2775,7 @@
  *  - Turn off after the print has finished and the user has pushed a button
  */
 #if ANY(BLINKM, RGB_LED, RGBW_LED, PCA9632, PCA9533, NEOPIXEL_LED)
-  #define PRINTER_EVENT_LEDS
+//  #define PRINTER_EVENT_LEDS
 #endif
 
 /**
