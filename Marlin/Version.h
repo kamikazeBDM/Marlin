@@ -36,9 +36,9 @@
 /*******************************************************************************************************
  * Vx  mm/dd/YYYY HH:MM 24HR
  * 
- * V32 05/10/2021 18:12
+ * V32 05/12/2021 10:55
  * 
- *      UPDATES: MARLIN upstream bugfix-2.0.x  05/10/2021
+ *      UPDATES: MARLIN upstream bugfix-2.0.x  05/12/2021
  *      define DEFAULT_TRAVEL_ACCELERATION   2500    // X, Y, Z acceleration for travel (non printing) moves
  *      #define DEFAULT_MAX_ACCELERATION        { 3000, 3000, 250, 9999 }
  *      
