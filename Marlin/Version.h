@@ -25,7 +25,7 @@
  * Marlin bugfix-2.0.x
  * Compiled version identifier
  ************************************/
-#define COMPILE_VERSION "32" 
+#define COMPILE_VERSION "33" 
 
 #define SHORT_BUILD_VERSION "bugfix-2.0.8.0-" COMPILE_VERSION
 #define STRING_CONFIG_H_AUTHOR "(JAM)" // Who made the changes.
@@ -36,7 +36,11 @@
 /*******************************************************************************************************
  * Vx  mm/dd/YYYY HH:MM 24HR
  * 
- * V32 05/12/2021 10:55
+ * V33 05/xx/2021 xx:xx
+ * 
+ *      UPDATES: MARLIN upstream bugfix-2.0.x  05/xx/2021
+ *   
+ * V32 05/12/2021 11:01
  * 
  *      UPDATES: MARLIN upstream bugfix-2.0.x  05/12/2021
  *      define DEFAULT_TRAVEL_ACCELERATION   2500    // X, Y, Z acceleration for travel (non printing) moves
