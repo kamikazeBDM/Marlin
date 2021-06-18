@@ -36,10 +36,10 @@
 /*******************************************************************************************************
  * Vx  mm/dd/YYYY HH:MM 24HR
  * 
- * V33 06/18/2021 09:00
+ * V33 06/18/2021 09:13
  * 
  *      ** RELEASED : bugfix-2.0.9.0 **     #define CONFIGURATION_ADV_H_VERSION 02000900
- *  * 
+ *   
  *      UPDATES: MARLIN upstream bugfix-2.0.x  06/18/2021
  *      #define DEFAULT_EJERK    9.0  // May be used by Linear Advance
  *      #define JUNCTION_DEVIATION_MM 0.0162 // [ .4 (NOZZLE DIAM) * 5( DEFAULT_EJERK)  * 5( DEFAULT_EJERK) / 2250 (PRINTING ACCELERATION)         
