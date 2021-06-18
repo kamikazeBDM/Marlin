@@ -27,7 +27,7 @@
  ************************************/
 #define COMPILE_VERSION "33" 
 
-#define SHORT_BUILD_VERSION "bugfix-2.0.8.0-" COMPILE_VERSION
+#define SHORT_BUILD_VERSION "bugfix-2.0.9.0-" COMPILE_VERSION
 #define STRING_CONFIG_H_AUTHOR "(JAM)" // Who made the changes.
 #define MACHINE_NAME "SKR Mini-E3-V2"
 #define CUSTOM_MACHINE_NAME "3863 CR-10S"
@@ -36,14 +36,24 @@
 /*******************************************************************************************************
  * Vx  mm/dd/YYYY HH:MM 24HR
  * 
- * V33 06/12/2021 xx:xx
+ * V33 06/18/2021 09:00
  * 
- *      UPDATES: MARLIN upstream bugfix-2.0.x  06/12/2021
- *   
+ *      ** RELEASED : bugfix-2.0.9.0 **     #define CONFIGURATION_ADV_H_VERSION 02000900
+ *  * 
+ *      UPDATES: MARLIN upstream bugfix-2.0.x  06/18/2021
+ *      #define DEFAULT_EJERK    9.0  // May be used by Linear Advance
+ *      #define JUNCTION_DEVIATION_MM 0.0162 // [ .4 (NOZZLE DIAM) * 5( DEFAULT_EJERK)  * 5( DEFAULT_EJERK) / 2250 (PRINTING ACCELERATION)         
+ *          0.4*5*5/2250 = 0.00444             - d=0.4 *  ( ) Jerk^2 / Acceleration_{printing} )
+ *      #define DEFAULT_MAX_ACCELERATION        { 3000, 3000, 100, 9999 }
+ *      #define DEFAULT_ACCELERATION          2250    // X, Y, Z and E acceleration for printing moves
+ *      #define DEFAULT_RETRACT_ACCELERATION  2000    // E acceleration for retracts
+ *      #define DEFAULT_TRAVEL_ACCELERATION   2500    // X, Y, Z acceleration for travel (non printing) moves
+ *      #define HOMING_FEEDRATE_MM_M { (90*60), (90*60), (12*60) }
+ * 
  * V32 05/12/2021 11:01
  * 
  *      UPDATES: MARLIN upstream bugfix-2.0.x  05/12/2021
- *      define DEFAULT_TRAVEL_ACCELERATION   2500    // X, Y, Z acceleration for travel (non printing) moves
+ *      define DEFAULT_TRAVEL_ACCELERATION      2500    // X, Y, Z acceleration for travel (non printing) moves
  *      #define DEFAULT_MAX_ACCELERATION        { 3000, 3000, 250, 9999 }
  *      
  * 
