@@ -25,7 +25,7 @@
  * Marlin bugfix-2.0.x
  * Compiled version identifier
  ************************************/
-#define COMPILE_VERSION "33" 
+#define COMPILE_VERSION "34" 
 
 #define SHORT_BUILD_VERSION "bugfix-2.0.9.0-" COMPILE_VERSION
 #define STRING_CONFIG_H_AUTHOR "(JAM)" // Who made the changes.
@@ -35,6 +35,14 @@
 
 /*******************************************************************************************************
  * Vx  mm/dd/YYYY HH:MM 24HR
+ * 
+ * V34 06/27/2021 10:30
+ * 
+ *      ** RELEASED : bugfix-2.0.9.1 **     #define CONFIGURATION_ADV_H_VERSION 02000900
+ *    
+ *      UPDATES: MARLIN upstream bugfix-2.0.9.x  06/27/2021
+ * 
+ *      RE-FIX NEO-PIXEL / Bed Light
  * 
  * V33 06/18/2021 09:13
  * 
