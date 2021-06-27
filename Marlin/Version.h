@@ -27,7 +27,7 @@
  ************************************/
 #define COMPILE_VERSION "34" 
 
-#define SHORT_BUILD_VERSION "bugfix-2.0.9.0-" COMPILE_VERSION
+#define SHORT_BUILD_VERSION "bugfix-2.0.9.1-" COMPILE_VERSION
 #define STRING_CONFIG_H_AUTHOR "(JAM)" // Who made the changes.
 #define MACHINE_NAME "SKR Mini-E3-V2"
 #define CUSTOM_MACHINE_NAME "3863 CR-10S"
@@ -36,13 +36,17 @@
 /*******************************************************************************************************
  * Vx  mm/dd/YYYY HH:MM 24HR
  * 
- * V34 06/27/2021 10:30
+ * V34 06/27/2021 14:50
  * 
  *      ** RELEASED : bugfix-2.0.9.1 **     #define CONFIGURATION_ADV_H_VERSION 02000900
- *    
+ *      // LED_CONTROL_MENU
+ *      // 
  *      UPDATES: MARLIN upstream bugfix-2.0.9.x  06/27/2021
  * 
- *      RE-FIX NEO-PIXEL / Bed Light
+ *      RE-FIX NEO-PIXEL / Bed Light: Removed bigtreetech Neopixel - Now using default Adafruit/Neopixel 1.8.2 (auto-added)
+ *      This should fix the fan issue created during previous update/merge
+*       #define DEFAULT_EJERK    5.0  // May be used by Linear Advance
+ *      #define JUNCTION_DEVIATION_MM 0.005 // [ .4 (NOZZLE DIAM) * 5( DEFAULT_EJERK)  * 5( DEFAULT_EJERK) / 2000 (PRINTING ACCELERATION)         
  * 
  * V33 06/18/2021 09:13
  * 
