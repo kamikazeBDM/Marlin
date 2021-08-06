@@ -2053,10 +2053,13 @@
 //
 //#define SAVED_POSITIONS 1         // Each saved position slot costs 12 bytes
 
+
+
+
 //
 // G2/G3 Arc Support
 //
-#define ARC_SUPPORT                 // Disable this feature to save ~3226 bytes
+//#define ARC_SUPPORT                 // Disable this feature to save ~3226 bytes
 #if ENABLED(ARC_SUPPORT)
   #define MM_PER_ARC_SEGMENT      1 // (mm) Length (or minimum length) of each arc segment
   //#define ARC_SEGMENTS_PER_R    1 // Max segment length, MM_PER = Min
@@ -2068,8 +2071,14 @@
   //#define SF_ARC_FIX              // Enable only if using SkeinForge with "Arc Point" fillet procedure
 #endif
 
+
+
 // Support for G5 with XYZE destination and IJPQ offsets. Requires ~2666 bytes.
 #define BEZIER_CURVE_SUPPORT
+
+
+
+
 
 /**
  * Direct Stepping

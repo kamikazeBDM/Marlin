@@ -25,7 +25,7 @@
  * Marlin bugfix-2.0.x
  * Compiled version identifier
  ************************************/
-#define COMPILE_VERSION "35" 
+#define COMPILE_VERSION "36" 
 
 #define SHORT_BUILD_VERSION "bugfix-2.0.9.1-" COMPILE_VERSION
 #define STRING_CONFIG_H_AUTHOR "(JAM)" // Who made the changes.
@@ -35,6 +35,10 @@
 
 /*******************************************************************************************************
  * Vx  mm/dd/YYYY HH:MM 24HR
+
+ * V36 08/06/2021 xx:xx
+ *      UPDATES: MARLIN upstream bugfix-2.0.9.1  08/06/2021
+ *      REMOVED: #define ARC_SUPPORT    
  * 
  * V35 06/27/2021 18:13
  * 
@@ -56,7 +60,7 @@
  *      ** RELEASED : bugfix-2.0.9.1 **     #define CONFIGURATION_ADV_H_VERSION 02000900
  *      // LED_CONTROL_MENU
  *      // 
- *      UPDATES: MARLIN upstream bugfix-2.0.9.x  06/27/2021
+ *      UPDATES: MARLIN upstream bugfix-2.0.9.1  06/27/2021
  * 
  *      RE-FIX NEO-PIXEL / Bed Light: Removed bigtreetech Neopixel - Now using default Adafruit/Neopixel 1.8.2 (auto-added)
  *      This should fix the fan issue created during previous update/merge
