@@ -37,6 +37,7 @@ extern const char NUL_STR[],
                   SP_I_LBL[], SP_J_LBL[], SP_K_LBL[],
                   SP_P_STR[], SP_T_STR[],
                   X_STR[], Y_STR[], Z_STR[], E_STR[],
+                  I_STR[], J_STR[], K_STR[],
                   X_LBL[], Y_LBL[], Z_LBL[], E_LBL[],
                   I_LBL[], J_LBL[], K_LBL[];
 
@@ -67,7 +68,7 @@ extern uint8_t marlin_debug_flags;
 // Serial redirection
 //
 // Step 1: Find out what the first serial leaf is
-#if BOTH(HAS_MULTI_SERIAL, SERIAL_CATCHALL)
+#if HAS_MULTI_SERIAL && defined(SERIAL_CATCHALL)
   #define _SERIAL_LEAF_1 MYSERIAL
 #else
   #define _SERIAL_LEAF_1 MYSERIAL1
@@ -304,6 +305,9 @@ void serial_echopair_PGM(PGM_P const s_P, unsigned int v);
 void serial_echopair_PGM(PGM_P const s_P, unsigned long v);
 inline void serial_echopair_PGM(PGM_P const s_P, bool v)    { serial_echopair_PGM(s_P, (int)v); }
 inline void serial_echopair_PGM(PGM_P const s_P, void *v)   { serial_echopair_PGM(s_P, (uintptr_t)v); }
+#if __INTPTR_WIDTH__ != __SIZE_WIDTH__
+  inline void serial_echopair_PGM(PGM_P const s_P, size_t v)   { serial_echopair_PGM(s_P, (long int)v); }
+#endif
 
 void serial_echo_start();
 void serial_error_start();
