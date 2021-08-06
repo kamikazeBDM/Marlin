@@ -25,7 +25,7 @@
  * Marlin bugfix-2.0.x
  * Compiled version identifier
  ************************************/
-#define COMPILE_VERSION "34" 
+#define COMPILE_VERSION "35" 
 
 #define SHORT_BUILD_VERSION "bugfix-2.0.9.1-" COMPILE_VERSION
 #define STRING_CONFIG_H_AUTHOR "(JAM)" // Who made the changes.
@@ -35,6 +35,21 @@
 
 /*******************************************************************************************************
  * Vx  mm/dd/YYYY HH:MM 24HR
+ * 
+ * V35 06/27/2021 18:13
+ * 
+ *      CORRECTED BOARD TYPE:  in platformio.ini - set  default_envs = STM32F103RE_btt   
+ * 
+ *      # BigTree SKR Mini E3 V2.0 & DIP / SKR CR6 (STM32F103RET6 ARM Cortex-M3)
+ *      #
+ *      #   STM32F103RE_btt ............. RET6
+ *      #   STM32F103RE_btt_USB ......... RET6 (USB mass storage)
+ *      #
+ *  
+ *      #define DEFAULT_Kp 25.2
+ *      #define DEFAULT_Ki 2.56
+ *      #define DEFAULT_Kd 61.98
+ *      M92 X80.25 Y80.25 Z400.00 E95.00
  * 
  * V34 06/27/2021 14:50
  * 

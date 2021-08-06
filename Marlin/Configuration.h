@@ -597,10 +597,10 @@
    //#define DEFAULT_Ki 1.90
    //#define DEFAULT_Kd 50.92
    
-   // 01/28/2021  -- M303 E0 C10 S230 U1 [M301 P22.43 I2.20 D57.09]
-   #define DEFAULT_Kp 22.43
-   #define DEFAULT_Ki 2.20
-   #define DEFAULT_Kd 57.09 
+
+   #define DEFAULT_Kp 25.2
+   #define DEFAULT_Ki 2.56
+   #define DEFAULT_Kd 61.98
   #endif
 #endif // PIDTEMP
 
@@ -645,10 +645,10 @@
   //#define DEFAULT_bedKi 34.70
   //#define DEFAULT_bedKd 609.93
 
-  // 01/28/2021  -- M303 E-1 S60 C10 U1 [M304 P206.21 I40.19 D705.45]
-  #define DEFAULT_bedKp 206.21
-  #define DEFAULT_bedKi 40.19
-  #define DEFAULT_bedKd 705.45
+
+  #define DEFAULT_bedKp 206.30
+  #define DEFAULT_bedKi 40.92
+  #define DEFAULT_bedKd 693.39
 
   // FIND YOUR OWN: "M303 E-1 C8 S90" to run autotune on the bed at 90 degreesC for 8 cycles.
 #endif // PIDTEMPBED
@@ -928,7 +928,7 @@
 
 //#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 500 }
 //#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80.20, 80.35, 400, 95.00 }
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80.20, 80.29, 400, 95.00 }    // 05/06/2021
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80.25, 80.25, 400, 95.00 }    // 05/06/2021
 
 /**
  * Default Max Feed Rate (mm/s)
