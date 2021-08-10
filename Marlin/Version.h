@@ -37,7 +37,7 @@
  * Vx  mm/dd/YYYY HH:MM 24HR
  * 
  * 
- * V36 08/10/2021 11:22
+ * V36 08/10/2021 11:43
  *      UPDATES: MARLIN upstream bugfix-2.0.9.1  08/10/2021
  *      REMOVED: #define ARC_SUPPORT    
  *      
@@ -397,7 +397,7 @@
  * here we define this default string as the date where the latest release
  * version was tagged.
  */
-#define STRING_DISTRIBUTION_DATE  __DATE__ " " __TIME__
+//#define STRING_DISTRIBUTION_DATE  __DATE__ " " __TIME__
 
 
 /**
