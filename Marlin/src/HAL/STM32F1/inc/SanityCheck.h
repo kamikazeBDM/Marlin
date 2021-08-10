@@ -40,7 +40,7 @@
 #endif
 
 #if ENABLED(NEOPIXEL_LED) && DISABLED(MKS_MINI_12864_V3)
-  //#error "NEOPIXEL_LED (Adafruit NeoPixel) is not supported for HAL/STM32F1. Comment out this line to proceed at your own risk!"
+  #error "NEOPIXEL_LED (Adafruit NeoPixel) is not supported for HAL/STM32F1. Comment out this line to proceed at your own risk!"
 #endif
 
 // Emergency Parser needs at least one serial with HardwareSerial or USBComposite.

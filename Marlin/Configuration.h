@@ -75,6 +75,7 @@
 
 #define CUSTOM_VERSION_FILE Version.h // Path from the root directory (no quotes)
 
+#define STRING_DISTRIBUTION_DATE  __DATE__ " " __TIME__
 
 
 /**
@@ -964,9 +965,6 @@
   #define MAX_FEEDRATE_EDIT_VALUES    { 600, 600, 10, 50 } // ...or, set your own edit limits
 #endif
 
-
-
-
 /**
  * Default Max Acceleration (change/s) change = mm/s
  * (Maximum start speed for accelerated moves)
@@ -1715,9 +1713,6 @@
   #define MESH_EDIT_MENU        // Add a menu to edit mesh points
 #endif
 
-
-
-
 // Add a menu item to move between bed corners for manual bed adjustment
 #define LEVEL_BED_CORNERS
 
@@ -1851,12 +1846,6 @@
   //#define SKEW_CORRECTION_GCODE
 #endif
 
-
-
-
-
-
-
 //=============================================================================
 //============================= Additional Features ===========================
 //=============================================================================
@@ -1977,7 +1966,7 @@
  *   Caveats: The ending Z should be the same as starting Z.
  * Attention: EXPERIMENTAL. G-code arguments may change.
  */
-#define NOZZLE_CLEAN_FEATURE
+//#define NOZZLE_CLEAN_FEATURE
 
 #if ENABLED(NOZZLE_CLEAN_FEATURE)
   // Default number of pattern repetitions
@@ -2922,16 +2911,17 @@
 #if ENABLED(NEOPIXEL_LED)
   
   //#define NEOPIXEL_TYPE   NEO_GRBW // NEO_GRBW / NEO_GRB - four/three channel driver type (defined in Adafruit_NeoPixel.h)
-  #define NEOPIXEL_TYPE   NEO_GRB  // + NEO_KHZ800 			// NEO_GRBW / NEO_GRB - four/three channel driver type (defined in Adafruit_NeoPixel.h)
-  //#define NEOPIXEL_PIN     4     // LED driving pin
-  #define NEOPIXEL_PIN     PC13       // LED driving pin -- NEO-PORT(PA8)ss NOT WORKING!
+  #define NEOPIXEL_TYPE   NEO_GRB   + NEO_KHZ800 			// NEO_GRBW / NEO_GRB - four/three channel driver type (defined in Adafruit_NeoPixel.h)
+ 
+  #define NEOPIXEL_PIN     PC13       // LED driving pin -- NEO-PIN(PA8)  on board does NOT work!
+ 
   //#define NEOPIXEL2_TYPE NEOPIXEL_TYPE
   //#define NEOPIXEL2_PIN    5
 
   #define NEOPIXEL_PIXELS           16    // Number of LEDs in the strip. (Longest strip when NEOPIXEL2_SEPARATE is disabled.)
-  #define NEOPIXEL_IS_SEQUENTIAL        // Sequential display for temperature change - LED by LED. Disable to change all LEDs at once.
+  #define NEOPIXEL_IS_SEQUENTIAL          // Sequential display for temperature change - LED by LED. Disable to change all LEDs at once.
   #define NEOPIXEL_BRIGHTNESS       255   // Initial brightness (0-255)
- // #define NEOPIXEL_STARTUP_TEST           // Cycle through colors at startup
+  #define NEOPIXEL_STARTUP_TEST           // Cycle through colors at startup
 
   // Support for second Adafruit NeoPixel LED driver controlled with M150 S1 ...
   //#define NEOPIXEL2_SEPARATE
