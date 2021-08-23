@@ -138,14 +138,10 @@
 //
 // Power Supply Control
 //
-#if ENABLED(PSU_CONTROL)                          // MKSPWC
-  #ifndef PS_ON_PIN
-    #define PS_ON_PIN                      P0_25  // SERVO
-  #endif
-  #ifndef KILL_PIN
-    #define KILL_PIN                       P1_29  // Z+
-    #define KILL_PIN_STATE                  HIGH
-  #endif
+#if ENABLED(MKS_PWC)
+  #define PS_ON_PIN                        P0_25  // SERVO
+  #define KILL_PIN                         P1_29  // Z+
+  #define KILL_PIN_STATE                    HIGH
 #endif
 
 //
@@ -331,10 +327,13 @@
    */
   #define X_SERIAL_TX_PIN                  P1_22  // J8-2
   #define X_SERIAL_RX_PIN                  P2_12  // J8-4 Interrupt Capable
+
   #define Y_SERIAL_TX_PIN                  P1_23  // J8-3
   #define Y_SERIAL_RX_PIN                  P2_11  // J8-5 Interrupt Capable
+
   #define Z_SERIAL_TX_PIN                  P2_12  // J8-4
   #define Z_SERIAL_RX_PIN                  P0_25  // TH3
+
   #define E0_SERIAL_TX_PIN                 P4_28  // J8-6
   #define E0_SERIAL_RX_PIN                 P0_26  // TH4
 

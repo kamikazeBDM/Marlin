@@ -160,28 +160,28 @@
   // No Hardware serial for steppers
   //
   #define X_SERIAL_TX_PIN                   PE6
-  #define X_SERIAL_RX_PIN                   PE6
+  #define X_SERIAL_RX_PIN        X_SERIAL_TX_PIN
 
   #define Y_SERIAL_TX_PIN                   PE3
-  #define Y_SERIAL_RX_PIN                   PE3
+  #define Y_SERIAL_RX_PIN        Y_SERIAL_TX_PIN
 
   #define Z_SERIAL_TX_PIN                   PB7
-  #define Z_SERIAL_RX_PIN                   PB7
+  #define Z_SERIAL_RX_PIN        Z_SERIAL_TX_PIN
 
   #define E0_SERIAL_TX_PIN                  PB3
-  #define E0_SERIAL_RX_PIN                  PB3
+  #define E0_SERIAL_RX_PIN      E0_SERIAL_TX_PIN
 
   #define E1_SERIAL_TX_PIN                  PD4
-  #define E1_SERIAL_RX_PIN                  PD4
+  #define E1_SERIAL_RX_PIN      E1_SERIAL_TX_PIN
 
   #define E2_SERIAL_TX_PIN                  PD0
-  #define E2_SERIAL_RX_PIN                  PD0
+  #define E2_SERIAL_RX_PIN      E2_SERIAL_TX_PIN
 
   #define E3_SERIAL_TX_PIN                  PD15
-  #define E3_SERIAL_RX_PIN                  PD15
+  #define E3_SERIAL_RX_PIN      E3_SERIAL_TX_PIN
 
   #define E4_SERIAL_TX_PIN                  PD11
-  #define E4_SERIAL_RX_PIN                  PD11
+  #define E4_SERIAL_RX_PIN      E4_SERIAL_TX_PIN
 
   // Reduce baud rate to improve software serial reliability
   #define TMC_BAUD_RATE                    19200
@@ -210,32 +210,24 @@
 //
 // Misc. Functions
 //
-#define MT_DET_1                            PC5   // Y+
-#define MT_DET_2                            PB12  // Z+
-
+#define PW_DET                              PC5   // Y+
+#define PW_OFF                              PB12  // Z+
+#define MT_DET_1_PIN                      PW_DET
+#define MT_DET_2_PIN                      PW_OFF
 #ifndef FIL_RUNOUT_PIN
-  #define FIL_RUNOUT_PIN                MT_DET_1
+  #define FIL_RUNOUT_PIN            MT_DET_1_PIN
 #endif
 #ifndef FIL_RUNOUT2_PIN
-  #define FIL_RUNOUT2_PIN               MT_DET_2
+  #define FIL_RUNOUT2_PIN           MT_DET_2_PIN
 #endif
 
 //
 // Power Supply Control
 //
-#if ENABLED(PSU_CONTROL)                          // MKSPWC
-  #ifndef PS_ON_PIN
-    #define PS_ON_PIN                   MT_DET_2  // Z+
-  #endif
-  #ifndef KILL_PIN
-    #define KILL_PIN                    MT_DET_1  // Y+
-    #define KILL_PIN_STATE                  HIGH
-  #endif
-#else
-  #define PW_DET                        MT_DET_1
-  #define PW_OFF                        MT_DET_2
-  #define POWER_LOSS_PIN                  PW_DET
-  #define PS_ON_PIN                       PW_OFF
+#if ENABLED(MKS_PWC)
+  #define PS_ON_PIN                         PW_OFF
+  #define KILL_PIN                          PW_DET
+  #define KILL_PIN_STATE                    HIGH
 #endif
 
 // Random Info
