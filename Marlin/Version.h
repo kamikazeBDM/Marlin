@@ -25,7 +25,7 @@
  * Marlin bugfix-2.0.x
  * Compiled version identifier
  ************************************/
-#define COMPILE_VERSION "36" 
+#define COMPILE_VERSION "37" 
 
 #define SHORT_BUILD_VERSION "bugfix-2.0.9.1-" COMPILE_VERSION
 #define STRING_CONFIG_H_AUTHOR "(JAM)" // Who made the changes.
@@ -36,6 +36,17 @@
 /*******************************************************************************************************
  * Vx  mm/dd/YYYY HH:MM 24HR
  * 
+ *      !! STM32F103RE_btt ** <-- build target
+ * 
+ * V37 08/23/2021 09:32
+ * 
+ *      #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80.25, 80.25, 400, 90.25 }    // 08/23/2021
+ *      UPDATES: MARLIN upstream bugfix-2.0.9.1  08/23/2021
+ *      READDED: #define ARC_SUPPORT    
+ *      #define BAUDRATE 115200
+ *      #define BAUD_RATE_GCODE  
+ *      #define JUNCTION_DEVIATION_MM 0.08
+ *      #define Y_CURRENT       910
  * 
  * V36 08/10/2021 13:29
  *      UPDATES: MARLIN upstream bugfix-2.0.9.1  08/10/2021

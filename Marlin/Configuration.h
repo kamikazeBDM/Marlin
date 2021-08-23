@@ -110,10 +110,6 @@
  */
 #define SERIAL_PORT 2
 
-
-
-
-
 /**
  * Serial Port Baud Rate
  * This is the default communication speed for all serial ports.
@@ -125,8 +121,14 @@
  *
  * :[2400, 9600, 19200, 38400, 57600, 115200, 250000, 500000, 1000000]
  */
-#define BAUDRATE 1152000
+#define BAUDRATE 115200
 #define BAUD_RATE_GCODE     // Enable G-code M575 to set the baud rate
+
+
+
+
+
+
 
 /**
  * Select a secondary serial port on the board to use for communication with the host.
@@ -948,8 +950,7 @@
  */
 
 //#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 500 }
-//#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80.20, 80.35, 400, 95.00 }
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80.25, 80.25, 400, 95.00 }    // 05/06/2021
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80.25, 80.25, 400, 90.25 }    // 08/23/2021
 
 /**
  * Default Max Feed Rate (mm/s)
@@ -995,9 +996,9 @@
 //#define DEFAULT_ACCELERATION          700    // X, Y, Z and E acceleration for printing moves
 //#define DEFAULT_RETRACT_ACCELERATION  700    // E acceleration for retracts
 //#define DEFAULT_TRAVEL_ACCELERATION   700    // X, Y, Z acceleration for travel (non printing) moves
-#define DEFAULT_ACCELERATION          2000    // X, Y, Z and E acceleration for printing moves
-#define DEFAULT_RETRACT_ACCELERATION  2000    // E acceleration for retracts
-#define DEFAULT_TRAVEL_ACCELERATION   2500    // X, Y, Z acceleration for travel (non printing) moves
+#define DEFAULT_ACCELERATION          1850    // X, Y, Z and E acceleration for printing moves
+#define DEFAULT_RETRACT_ACCELERATION  1850    // E acceleration for retracts
+#define DEFAULT_TRAVEL_ACCELERATION   2000    // X, Y, Z acceleration for travel (non printing) moves
 
 
 
@@ -1036,8 +1037,8 @@
  *   https://blog.kyneticcnc.com/2018/10/computing-junction-deviation-for-marlin.html
  */
 #if DISABLED(CLASSIC_JERK)
-//  #define JUNCTION_DEVIATION_MM 0.08  // (mm) Distance from real junction edge
-  #define JUNCTION_DEVIATION_MM 0.00444  // (mm) Distance from real junction edge
+  #define JUNCTION_DEVIATION_MM 0.08  // (mm) Distance from real junction edge
+//  #define JUNCTION_DEVIATION_MM 0.0055  // (mm) Distance from real junction edge
   #define JD_HANDLE_SMALL_SEGMENTS    // Use curvature estimation instead of just the junction angle
                                       // for small segments (< 1mm) with large junction angles (> 135°).
 #endif

@@ -2056,18 +2056,24 @@
 //#define SAVED_POSITIONS 1         // Each saved position slot costs 12 bytes
 
 //
+
+
+
 // G2/G3 Arc Support
 //
-#define ARC_SUPPORT                 // Disable this feature to save ~3226 bytes
+#define ARC_SUPPORT                     // Disable this feature to save ~3226 bytes
 #if ENABLED(ARC_SUPPORT)
-  #define ARC_SEGMENTS_PER_R    1 // Max segment length, MM_PER = Min
-  #define MIN_ARC_SEGMENTS       30 // Minimum number of segments in a complete circle
-  #define ARC_SEGMENTS_PER_SEC 50 // Use feedrate to choose segment length (with MM_PER_ARC_SEGMENT as the minimum)
-  #define N_ARC_CORRECTION       25 // Number of interpolated segments between corrections
-  //#define ARC_P_CIRCLES           // Enable the 'P' parameter to specify complete circles
-  //#define CNC_WORKSPACE_PLANES    // Allow G2/G3 to operate in XY, ZX, or YZ planes
-  //#define SF_ARC_FIX              // Enable only if using SkeinForge with "Arc Point" fillet procedure
+  #define MM_PER_ARC_SEGMENT      1     // (mm) Length (or minimum length) of each arc segment
+  #define ARC_SEGMENTS_PER_R      1     // Max segment length, MM_PER = Min
+  #define MIN_ARC_SEGMENTS        30    // Minimum number of segments in a complete circle
+  #define ARC_SEGMENTS_PER_SEC    50    // Use feedrate to choose segment length (with MM_PER_ARC_SEGMENT as the minimum)
+  #define N_ARC_CORRECTION        25    // Number of interpolated segments between corrections
+  //#define ARC_P_CIRCLES               // Enable the 'P' parameter to specify complete circles
+  //#define CNC_WORKSPACE_PLANES        // Allow G2/G3 to operate in XY, ZX, or YZ planes
+  //#define SF_ARC_FIX                  // Enable only if using SkeinForge with "Arc Point" fillet procedure
 #endif
+
+
 
 // Support for G5 with XYZE destination and IJPQ offsets. Requires ~2666 bytes.
 #define BEZIER_CURVE_SUPPORT
@@ -2614,7 +2620,7 @@
   #endif
 
   #if AXIS_IS_TMC(Y)
-    #define Y_CURRENT       850
+    #define Y_CURRENT       910
     #define Y_CURRENT_HOME  Y_CURRENT
     #define Y_MICROSTEPS     16
     #define Y_RSENSE          0.11
