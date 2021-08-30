@@ -38,14 +38,9 @@
  * 
  *      !! STM32F103RE_btt ** <-- build target
  * 
- * V38 08/28/2021 13:11
+ * V38 08/29/2021 17:50
  *      UPDATES: MARLIN upstream bugfix-2.0.9.1  08/28/2021
  * 
- *      *** SEE VERSION 14 ***
- *      NEO PIXEL port (PA8) doesnt work. ?? Try again with newer support of firmware.
- *      //** USE PS-ON port PC13 **
- *          ** WAS #define NEOPIXEL_PIN     PC13       // LED driving pin
- *          * TESTING PC13
  * 
  * V37 08/23/2021 09:32
  * 
