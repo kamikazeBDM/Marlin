@@ -136,8 +136,7 @@
  * :[-2, -1, 0, 1, 2, 3, 4, 5, 6, 7]
  */
 #define SERIAL_PORT_2 -1
-//#define SERIAL_PORT_2 -1
-//#define BAUDRATE_2 250000   // Enable to override BAUDRATE
+#define BAUDRATE_2 115200   // Enable to override BAUDRATE
 
 /**
  * Select a third serial port on the board to use for communication with the host.
@@ -990,14 +989,9 @@
  *   M204 R    Retract Acceleration
  *   M204 T    Travel Acceleration
  */
-////#define DEFAULT_ACCELERATION          500    // X, Y, Z and E acceleration for printing moves
-////#define DEFAULT_RETRACT_ACCELERATION  500    // E acceleration for retracts
-////#define DEFAULT_TRAVEL_ACCELERATION   500    // X, Y, Z acceleration for travel (non printing) moves
-//#define DEFAULT_ACCELERATION          700    // X, Y, Z and E acceleration for printing moves
-//#define DEFAULT_RETRACT_ACCELERATION  700    // E acceleration for retracts
-//#define DEFAULT_TRAVEL_ACCELERATION   700    // X, Y, Z acceleration for travel (non printing) moves
-#define DEFAULT_ACCELERATION          1850    // X, Y, Z and E acceleration for printing moves
-#define DEFAULT_RETRACT_ACCELERATION  1850    // E acceleration for retracts
+
+#define DEFAULT_ACCELERATION          1800    // X, Y, Z and E acceleration for printing moves
+#define DEFAULT_RETRACT_ACCELERATION  1800    // E acceleration for retracts
 #define DEFAULT_TRAVEL_ACCELERATION   2000    // X, Y, Z acceleration for travel (non printing) moves
 
 
@@ -1037,8 +1031,9 @@
  *   https://blog.kyneticcnc.com/2018/10/computing-junction-deviation-for-marlin.html
  */
 #if DISABLED(CLASSIC_JERK)
-  #define JUNCTION_DEVIATION_MM 0.08  // (mm) Distance from real junction edge
-//  #define JUNCTION_DEVIATION_MM 0.0055  // (mm) Distance from real junction edge
+//  #define JUNCTION_DEVIATION_MM 0.08  // (mm) Distance from real junction edge
+ #define JUNCTION_DEVIATION_MM 0.022 // [ .4 (NOZZLE DIAM) * 10( DEFAULT_JERK)  * 10( DEFAULT_JERK) / 1800 (PRINTING ACCELERATION)         
+
   #define JD_HANDLE_SMALL_SEGMENTS    // Use curvature estimation instead of just the junction angle
                                       // for small segments (< 1mm) with large junction angles (> 135°).
 #endif
@@ -2919,14 +2914,9 @@
 #if ENABLED(NEOPIXEL_LED)
   
   //#define NEOPIXEL_TYPE   NEO_GRBW // NEO_GRBW / NEO_GRB - four/three channel driver type (defined in Adafruit_NeoPixel.h)
-  //#define NEOPIXEL_TYPE   NEO_GRB   + NEO_KHZ800 			// NEO_GRBW / NEO_GRB - four/three channel driver type (defined in Adafruit_NeoPixel.h)
 
   #define NEOPIXEL_TYPE   NEO_GRB                     // NEO_GRBW / NEO_GRB - four/three channel driver type (defined in Adafruit_NeoPixel.h)
-
-// pins_BTT_SKR_MINI_E3_V2_0.h file defines NEOPIXEL_PIN = PA8 - not need to define here unless moving to another pin 
-#define NEOPIXEL_PIN     PC13       // LED driving pin -- NEO-PIN(PA8)  on board does NOT work!
-
-
+  #define NEOPIXEL_PIN     PC13       // LED driving pin -- NEO-PIN(PA8)  on board does NOT work!
 
   //#define NEOPIXEL2_TYPE NEOPIXEL_TYPE
   //#define NEOPIXEL2_PIN    5

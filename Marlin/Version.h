@@ -25,7 +25,7 @@
  * Marlin bugfix-2.0.x
  * Compiled version identifier
  ************************************/
-#define COMPILE_VERSION "38" 
+#define COMPILE_VERSION "39" 
 
 #define SHORT_BUILD_VERSION "bugfix-2.0.9.1-" COMPILE_VERSION
 #define STRING_CONFIG_H_AUTHOR "(JAM)" // Who made the changes.
@@ -38,9 +38,14 @@
  * 
  *      !! STM32F103RE_btt ** <-- build target
  * 
- * V38 08/29/2021 17:50
- *      UPDATES: MARLIN upstream bugfix-2.0.9.1  08/28/2021
+ * V39 08/31/2021 15:14
+ *      UPDATES: MARLIN upstream bugfix-2.0.9.1  08/31/2021
+ *      REMOVED:  #define ARC_SUPPORT   
+ *      SET BAUD RATE TO 115200
+ *      Increased Buffer Sizes
  * 
+ * V38 08/29/2021 17:50
+ *      UPDATES: MARLIN upstream bugfix-2.0.9.1  08/29/2021
  * 
  * V37 08/23/2021 09:32
  * 
