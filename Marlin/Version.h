@@ -38,11 +38,11 @@
  * 
  *      !! STM32F103RE_btt ** <-- build target
  * 
- * V39 08/31/2021 15:14
+ * V39 08/31/2021 15:17
  *      UPDATES: MARLIN upstream bugfix-2.0.9.1  08/31/2021
  *      REMOVED:  #define ARC_SUPPORT   
- *      SET BAUD RATE TO 115200
- *      Increased Buffer Sizes
+ *      #define BAUDRATE 115200
+ *      #define RX_BUFFER_SIZE 1024
  * 
  * V38 08/29/2021 17:50
  *      UPDATES: MARLIN upstream bugfix-2.0.9.1  08/29/2021
