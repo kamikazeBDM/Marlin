@@ -38,11 +38,11 @@
  * 
  *      !! STM32F103RE_btt ** <-- build target
  * 
- * V40 09/07/2021 14:45
+ * V40 09/07/2021 15:06
  *      UPDATES: MARLIN upstream bugfix-2.0.9.1  09/07/2021
  * 
  *          BMG dual drive clone extruder installed
- *          Extruder Steps changed from 90 to  401.375 ( current setting on Ender 3 Pro with same stepper used as starting point for calib )
+ *          Extruder Steps changed from 90 to  355.1875 ( current setting on Ender 3 Pro with same stepper used as starting point for calib )
  * 
  * V39 08/31/2021 15:53
  *      UPDATES: MARLIN upstream bugfix-2.0.9.1  08/31/2021
