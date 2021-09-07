@@ -952,7 +952,9 @@
  */
 
 //#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 500 }
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80.25, 80.25, 400, 90.25 }    // 08/23/2021
+//#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80.25, 80.25, 400.00, 90.00 }    // 08/31/2021  -- PRE BMG Extruder upgrade
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80.25, 80.25, 400.00, 401.375 }    // 09/07/2021 -- BMG dual drive clone extruder installed ( 3-1 gearing )
+
 
 /**
  * Default Max Feed Rate (mm/s)

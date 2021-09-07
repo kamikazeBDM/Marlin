@@ -25,7 +25,7 @@
  * Marlin bugfix-2.0.x
  * Compiled version identifier
  ************************************/
-#define COMPILE_VERSION "39" 
+#define COMPILE_VERSION "40" 
 
 #define SHORT_BUILD_VERSION "bugfix-2.0.9.1-" COMPILE_VERSION
 #define STRING_CONFIG_H_AUTHOR "(JAM)" // Who made the changes.
@@ -38,11 +38,17 @@
  * 
  *      !! STM32F103RE_btt ** <-- build target
  * 
- * V39 08/31/2021 15:17
+ * V40 09/07/2021 15:00
+ *      UPDATES: MARLIN upstream bugfix-2.0.9.1  09/07/2021
+ * 
+ *          BMG dual drive clone extruder installed ( 3-1 gearing )
+ *          Extruder Steps changed from 90 to  401.375 ( current setting on Ender 3 Pro with same stepper used as starting point for calib )
+ * 
+ * V39 08/31/2021 15:53
  *      UPDATES: MARLIN upstream bugfix-2.0.9.1  08/31/2021
  *      REMOVED:  #define ARC_SUPPORT   
  *      #define BAUDRATE 115200
- *      #define RX_BUFFER_SIZE 1024
+ *      #define RX_BUFFER_SIZE 32
  * 
  * V38 08/29/2021 17:50
  *      UPDATES: MARLIN upstream bugfix-2.0.9.1  08/29/2021
