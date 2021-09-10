@@ -25,7 +25,7 @@
  * Marlin bugfix-2.0.x
  * Compiled version identifier
  ************************************/
-#define COMPILE_VERSION "40" 
+#define COMPILE_VERSION "41" 
 
 #define SHORT_BUILD_VERSION "bugfix-2.0.9.1-" COMPILE_VERSION
 #define STRING_CONFIG_H_AUTHOR "(JAM)" // Who made the changes.
@@ -37,6 +37,9 @@
  * Vx  mm/dd/YYYY HH:MM 24HR
  * 
  *      !! STM32F103RE_btt ** <-- build target
+ * 
+ * V41 09/09/2021 18:32
+ *      UPDATES: MARLIN upstream bugfix-2.0.9.1  09/09/2021
  * 
  * V40 09/07/2021 15:06
  *      UPDATES: MARLIN upstream bugfix-2.0.9.1  09/07/2021
