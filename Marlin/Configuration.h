@@ -121,7 +121,7 @@
  *
  * :[2400, 9600, 19200, 38400, 57600, 115200, 250000, 500000, 1000000]
  */
-#define BAUDRATE 115200
+#define BAUDRATE 250000
 #define BAUD_RATE_GCODE     // Enable G-code M575 to set the baud rate
 
 
@@ -136,7 +136,7 @@
  * :[-2, -1, 0, 1, 2, 3, 4, 5, 6, 7]
  */
 #define SERIAL_PORT_2 -1
-#define BAUDRATE_2 115200   // Enable to override BAUDRATE
+#define BAUDRATE_2 250000   // Enable to override BAUDRATE
 
 /**
  * Select a third serial port on the board to use for communication with the host.
@@ -615,9 +615,10 @@
     #define DEFAULT_Kd_LIST { 114.00, 114.00 }
   #else
 
-   #define DEFAULT_Kp 25.2
-   #define DEFAULT_Ki 2.56
-   #define DEFAULT_Kd 61.98
+  #define DEFAULT_Kp 21.2383
+  #define DEFAULT_Ki 2.0741
+  #define DEFAULT_Kd 54.3701
+
   #endif
 
 #endif // PIDTEMP
@@ -658,15 +659,9 @@
   // 120V 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
   // from FOPDT model - kp=.39 Tp=405 Tdead=66, Tc set to 79.2, aggressive factor of .15 (vs .1, 1, 10)
 
-  // 10/08/2020 -- M303 E-1 S60 C10 U1
-  //#define DEFAULT_bedKp 178.17
-  //#define DEFAULT_bedKi 34.70
-  //#define DEFAULT_bedKd 609.93
-
-
-  #define DEFAULT_bedKp 206.30
-  #define DEFAULT_bedKi 40.92
-  #define DEFAULT_bedKd 693.39
+  #define DEFAULT_bedKp 125.4873
+  #define DEFAULT_bedKi 24.8983
+  #define DEFAULT_bedKd 421.6374
 
   // FIND YOUR OWN: "M303 E-1 C8 S90" to run autotune on the bed at 90 degreesC for 8 cycles.
 #endif // PIDTEMPBED
@@ -949,7 +944,7 @@
 
 //#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 500 }
 //#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80.25, 80.25, 400.00, 90.00 }    // 08/31/2021  -- PRE BMG Extruder upgrade
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80.25, 80.25, 400.00, 355.1875 }    // 09/07/2021 -- BMG dual drive clone extruder installed
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80.25, 80.25, 400.00, 350.00 }    // 09/07/2021 -- BMG dual drive clone extruder installed
 
 
 /**
@@ -974,8 +969,7 @@
  *                                      X, Y, Z [, I [, J [, K]]], E0 [, E1[, E2...]]
  */
 //#define DEFAULT_MAX_ACCELERATION      { 500, 500, 100, 5000 }
-//#define DEFAULT_MAX_ACCELERATION      { 700, 700, 100, 5000 }
-#define DEFAULT_MAX_ACCELERATION        { 3000, 3000, 250, 9999 }
+#define DEFAULT_MAX_ACCELERATION        { 3500, 3500, 250, 9999 }
 
 //#define LIMITED_MAX_ACCEL_EDITING     // Limit edit via M201 or LCD to DEFAULT_MAX_ACCELERATION * 2
 #if ENABLED(LIMITED_MAX_ACCEL_EDITING)
@@ -991,9 +985,9 @@
  *   M204 T    Travel Acceleration
  */
 
-#define DEFAULT_ACCELERATION          1800    // X, Y, Z and E acceleration for printing moves
-#define DEFAULT_RETRACT_ACCELERATION  1800    // E acceleration for retracts
-#define DEFAULT_TRAVEL_ACCELERATION   2000    // X, Y, Z acceleration for travel (non printing) moves
+#define DEFAULT_ACCELERATION          2000    // X, Y, Z and E acceleration for printing moves
+#define DEFAULT_RETRACT_ACCELERATION  2000    // E acceleration for retracts
+#define DEFAULT_TRAVEL_ACCELERATION   2500    // X, Y, Z acceleration for travel (non printing) moves
 
 
 
@@ -1033,7 +1027,7 @@
  */
 #if DISABLED(CLASSIC_JERK)
 //  #define JUNCTION_DEVIATION_MM 0.08  // (mm) Distance from real junction edge
- #define JUNCTION_DEVIATION_MM 0.022 // [ .4 (NOZZLE DIAM) * 10( DEFAULT_JERK)  * 10( DEFAULT_JERK) / 1800 (PRINTING ACCELERATION)         
+ #define JUNCTION_DEVIATION_MM 0.01 // [ .4 (NOZZLE DIAM) * 5( DEFAULT_JERK)  * 5( DEFAULT_JERK) / 2000 (PRINTING ACCELERATION)         
 
   #define JD_HANDLE_SMALL_SEGMENTS    // Use curvature estimation instead of just the junction angle
                                       // for small segments (< 1mm) with large junction angles (> 135°).
@@ -1715,7 +1709,7 @@
 #define LEVEL_BED_CORNERS
 
 #if ENABLED(LEVEL_BED_CORNERS)
-  #define LEVEL_CORNERS_INSET_LFRB { 20, 20, 20, 20 } // (mm) Left, Front, Right, Back insets
+  #define LEVEL_CORNERS_INSET_LFRB { 25, 25, 25, 25 } // (mm) Left, Front, Right, Back insets
   #define LEVEL_CORNERS_HEIGHT      0.0   // (mm) Z height of nozzle at leveling points
   #define LEVEL_CORNERS_Z_HOP       10.0   // (mm) Z height of nozzle between leveling points
   #define LEVEL_CENTER_TOO              // Move to the center after the last corner
@@ -1789,7 +1783,7 @@
 
 // Homing speeds (mm/min)
 //#define HOMING_FEEDRATE_MM_M { (50*60), (50*60), (4*60) }
-#define HOMING_FEEDRATE_MM_M { (100*60), (100*60), (15*60) }
+#define HOMING_FEEDRATE_MM_M { (120*60), (120*60), (13*60) }
 
 // Validate that endstops are triggered on homing moves
 #define VALIDATE_HOMING_ENDSTOPS
@@ -1906,15 +1900,15 @@
 //
 // Preheat Constants - Up to 5 are supported without changes
 //
-#define PREHEAT_1_LABEL       "PLA"
-#define PREHEAT_1_TEMP_HOTEND 220
-#define PREHEAT_1_TEMP_BED     50
+#define PREHEAT_1_LABEL       "PLA+"
+#define PREHEAT_1_TEMP_HOTEND 227
+#define PREHEAT_1_TEMP_BED     57
 #define PREHEAT_1_TEMP_CHAMBER 0
 #define PREHEAT_1_FAN_SPEED     0 // Value from 0 to 255
 
-#define PREHEAT_2_LABEL       "ABS"
-#define PREHEAT_2_TEMP_HOTEND 250
-#define PREHEAT_2_TEMP_BED    110
+#define PREHEAT_2_LABEL       "PETG"
+#define PREHEAT_2_TEMP_HOTEND 235
+#define PREHEAT_2_TEMP_BED    70
 #define PREHEAT_2_TEMP_CHAMBER 0
 #define PREHEAT_2_FAN_SPEED     0 // Value from 0 to 255
 

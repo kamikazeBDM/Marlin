@@ -25,7 +25,7 @@
  * Marlin bugfix-2.0.x
  * Compiled version identifier
  ************************************/
-#define COMPILE_VERSION "41" 
+#define COMPILE_VERSION "42" 
 
 #define SHORT_BUILD_VERSION "bugfix-2.0.9.1-" COMPILE_VERSION
 #define STRING_CONFIG_H_AUTHOR "(JAM)" // Who made the changes.
@@ -37,6 +37,20 @@
  * Vx  mm/dd/YYYY HH:MM 24HR
  * 
  *      !! STM32F103RE_btt ** <-- build target
+ * 
+ * V42 09/10/2021 10:45
+ * 
+ *      UPDATES: MARLIN upstream bugfix-2.0.9.1  09/10/2021
+ *      RETUNE: PID HE0 + BED
+ *      #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80.25, 80.25, 400.00, 350.0 } 
+ *      M301 P21.2383 I2.0741 D54.3701
+ *      M304 P125.4873 I24.8983 D421.6374
+ *      #define BAUDRATE 250000
+ *      #define DEFAULT_MAX_ACCELERATION        { 3500, 3500, 250, 9999 }
+ *      #define DEFAULT_ACCELERATION          2000    // X, Y, Z and E acceleration for printing moves
+ *      #define DEFAULT_RETRACT_ACCELERATION  2000    // E acceleration for retracts
+ *      #define DEFAULT_TRAVEL_ACCELERATION   2500    // X, Y, Z acceleration for travel (non printing) moves
+ *      #define JUNCTION_DEVIATION_MM 0.01
  * 
  * V41 09/09/2021 18:32
  *      UPDATES: MARLIN upstream bugfix-2.0.9.1  09/09/2021
