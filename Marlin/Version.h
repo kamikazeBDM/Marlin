@@ -38,14 +38,14 @@
  * 
  *      !! STM32F103RE_btt ** <-- build target
  * 
- * V44 09/24/2021 13:49
+ * V44 09/24/2021 14:40
  *      UPDATES: MARLIN upstream bugfix-2.0.9.1  09/24/2021
  *      #define HOMING_FEEDRATE_MM_M { (120*60), (120*60), (15*60) }
  *      #define MANUAL_FEEDRATE { 120*60, 120*60, 15*60, 2*60 } // (mm/min) Feedrates for manual moves along X, Y, Z, E from panel
  *      #define DEFAULT_ACCELERATION          1875    // X, Y, Z and E acceleration for printing moves
  *      #define DEFAULT_RETRACT_ACCELERATION  1000    // E acceleration for retracts
  *      #define DEFAULT_TRAVEL_ACCELERATION   1875    // X, Y, Z acceleration for travel (non printing) moves
- *      //#define STEALTHCHOP_I     --- no stealthhop on extruder
+ *      //#define STEALTHCHOP_I     --- no stealthchop on extruder
  *      
  * V43 09/10/2021 13:17
  *      UPDATES: MARLIN upstream bugfix-2.0.9.1  09/10/2021

@@ -951,7 +951,7 @@
 
 //#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 500 }
 //#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80.25, 80.25, 400.00, 90.00 }    // 08/31/2021  -- PRE BMG Extruder upgrade - STOCK CREALITY EXTRUDER
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80.35, 80.35, 400.00, 350.00 }    // 09/10/2021 -- BMG dual drive clone extruder installed
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80.35, 80.35, 400.00, 351.50 }    // 09/24/2021 -- BMG dual drive clone extruder installed
 
 
 /**
