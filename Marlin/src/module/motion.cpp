@@ -124,7 +124,7 @@ xyze_pos_t destination; // {0}
       "Offsets for the first hotend must be 0.0."
     );
     // Transpose from [XYZ][HOTENDS] to [HOTENDS][XYZ]
-    HOTEND_LOOP() LOOP_LINEAR_AXES(a) hotend_offset[e][a] = tmp[a][e];
+    HOTEND_LOOP() LOOP_ABC(a) hotend_offset[e][a] = tmp[a][e];
     #if ENABLED(DUAL_X_CARRIAGE)
       hotend_offset[1].x = _MAX(X2_HOME_POS, X2_MAX_POS);
     #endif
@@ -489,7 +489,7 @@ void do_blocking_move_to(LINEAR_AXIS_ARGS(const float), const_feedRate_t fr_mm_s
     const feedRate_t z_feedrate = fr_mm_s ?: homing_feedrate(Z_AXIS);
   #endif
 
-  #if EITHER(DELTA, IS_SCARA)
+  #if IS_KINEMATIC
     if (!position_is_reachable(x, y)) return;
     destination = current_position;          // sync destination at the start
   #endif

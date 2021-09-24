@@ -276,8 +276,8 @@ class Stepper {
 
     static block_t* current_block;          // A pointer to the block currently being traced
 
-    static uint8_t last_direction_bits,     // The next stepping-bits to be output
-                   axis_did_move;           // Last Movement in the given direction is not null, as computed when the last movement was fetched from planner
+    static axis_bits_t last_direction_bits, // The next stepping-bits to be output
+                       axis_did_move;       // Last Movement in the given direction is not null, as computed when the last movement was fetched from planner
 
     static bool abort_current_block;        // Signals to the stepper that current block should be aborted
 
@@ -372,11 +372,11 @@ class Stepper {
         uint8_t cur_power;  // Current laser power
         bool cruise_set;    // Power set up for cruising?
 
-        #if DISABLED(LASER_POWER_INLINE_TRAPEZOID_CONT)
+        #if ENABLED(LASER_POWER_INLINE_TRAPEZOID_CONT)
+          uint16_t till_update;     // Countdown to the next update
+        #else
           uint32_t last_step_count, // Step count from the last update
                    acc_step_count;  // Bresenham counter for laser accel/decel
-        #else
-          uint16_t till_update;     // Countdown to the next update
         #endif
       } stepper_laser_t;
 
@@ -523,7 +523,7 @@ class Stepper {
     static void set_directions();
 
     // Set direction bits and update all stepper DIR states
-    static void set_directions(const uint8_t bits) {
+    static void set_directions(const axis_bits_t bits) {
       last_direction_bits = bits;
       set_directions();
     }

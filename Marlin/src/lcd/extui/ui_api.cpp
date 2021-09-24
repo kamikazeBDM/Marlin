@@ -423,6 +423,12 @@ namespace ExtUI {
         #if AXIS_IS_TMC(Z2)
           case Z2: return stepperZ2.getMilliamps();
         #endif
+        #if AXIS_IS_TMC(Z3)
+          case Z3: return stepperZ3.getMilliamps();
+        #endif
+        #if AXIS_IS_TMC(Z4)
+          case Z4: return stepperZ4.getMilliamps();
+        #endif
         default: return NAN;
       };
     }
@@ -485,6 +491,12 @@ namespace ExtUI {
         #endif
         #if AXIS_IS_TMC(Z2)
           case Z2: stepperZ2.rms_current(constrain(mA, 400, 1500)); break;
+        #endif
+        #if AXIS_IS_TMC(Z3)
+          case Z3: stepperZ3.rms_current(constrain(mA, 400, 1500)); break;
+        #endif
+        #if AXIS_IS_TMC(Z4)
+          case Z4: stepperZ4.rms_current(constrain(mA, 400, 1500)); break;
         #endif
         default: break;
       };
@@ -1037,6 +1049,8 @@ namespace ExtUI {
 
   #if M600_PURGE_MORE_RESUMABLE
     void setPauseMenuResponse(PauseMenuResponse response) { pause_menu_response = response; }
+    PauseMessage pauseModeStatus = PAUSE_MESSAGE_STATUS;
+    PauseMode getPauseMode() { return pause_mode;}
   #endif
 
   void printFile(const char *filename) {
