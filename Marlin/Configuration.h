@@ -950,7 +950,7 @@
  */
 
 //#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 500 }
-//#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80.25, 80.25, 400.00, 90.00 }    // 08/31/2021  -- PRE BMG Extruder upgrade
+//#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80.25, 80.25, 400.00, 90.00 }    // 08/31/2021  -- PRE BMG Extruder upgrade - STOCK CREALITY EXTRUDER
 #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80.35, 80.35, 400.00, 350.00 }    // 09/10/2021 -- BMG dual drive clone extruder installed
 
 
@@ -960,7 +960,6 @@
  *                                      X, Y, Z [, I [, J [, K]]], E0 [, E1[, E2...]]
  */
 //#define DEFAULT_MAX_FEEDRATE       { 500,  500,  5,   25 }
-//#define DEFAULT_MAX_FEEDRATE       { 1000, 1000, 170, 5000 }
 #define DEFAULT_MAX_FEEDRATE         { 200,  200,  15,   250 }
 
 
@@ -992,9 +991,9 @@
  *   M204 T    Travel Acceleration
  */
 
-#define DEFAULT_ACCELERATION          2000    // X, Y, Z and E acceleration for printing moves
-#define DEFAULT_RETRACT_ACCELERATION  2000    // E acceleration for retracts
-#define DEFAULT_TRAVEL_ACCELERATION   2500    // X, Y, Z acceleration for travel (non printing) moves
+#define DEFAULT_ACCELERATION          1875    // X, Y, Z and E acceleration for printing moves
+#define DEFAULT_RETRACT_ACCELERATION  1000    // E acceleration for retracts
+#define DEFAULT_TRAVEL_ACCELERATION   1875    // X, Y, Z acceleration for travel (non printing) moves
 
 
 
@@ -1033,8 +1032,8 @@
  *   https://blog.kyneticcnc.com/2018/10/computing-junction-deviation-for-marlin.html
  */
 #if DISABLED(CLASSIC_JERK)
-//  #define JUNCTION_DEVIATION_MM 0.08  // (mm) Distance from real junction edge
- #define JUNCTION_DEVIATION_MM 0.01 // [ .4 (NOZZLE DIAM) * 5( DEFAULT_JERK)  * 5( DEFAULT_JERK) / 2000 (PRINTING ACCELERATION)         
+//  #define JUNCTION_DEVIATION_MM 0.13  // (mm) Distance from real junction edge
+ #define JUNCTION_DEVIATION_MM 0.013 // [ .4 (NOZZLE DIAM) * 5( DEFAULT_JERK)  * 5( DEFAULT_JERK) / 2000 (PRINTING ACCELERATION)         
 
   #define JD_HANDLE_SMALL_SEGMENTS    // Use curvature estimation instead of just the junction angle
                                       // for small segments (< 1mm) with large junction angles (> 135°).
@@ -1790,7 +1789,7 @@
 
 // Homing speeds (mm/min)
 //#define HOMING_FEEDRATE_MM_M { (50*60), (50*60), (4*60) }
-#define HOMING_FEEDRATE_MM_M { (120*60), (120*60), (13*60) }
+#define HOMING_FEEDRATE_MM_M { (120*60), (120*60), (15*60) }
 
 // Validate that endstops are triggered on homing moves
 #define VALIDATE_HOMING_ENDSTOPS
