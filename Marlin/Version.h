@@ -38,7 +38,14 @@
  * 
  *      !! STM32F103RE_btt ** <-- build target
  * 
- * V42 09/10/2021 10:45
+ * V43 09/10/2021 13:17
+ *      UPDATES: MARLIN upstream bugfix-2.0.9.1  09/10/2021
+ *      #define ADVANCED_PAUSE_FEATURE
+ *          Filament load settings updated 
+ *      #define E0_CURRENT      900
+ *       #define FAST_PWM_FAN_FREQUENCY 488 ** -< NOTE: Works with existing 5015 Fans and main cooling fan. MAY NEED TO BE CHANGED IF YOU USE DIFFERENT 5015's.
+ * 
+ * V42 09/10/2021 11:02
  * 
  *      UPDATES: MARLIN upstream bugfix-2.0.9.1  09/10/2021
  *      RETUNE: PID HE0 + BED
@@ -98,7 +105,7 @@
  *      #define DEFAULT_Kp 25.2
  *      #define DEFAULT_Ki 2.56
  *      #define DEFAULT_Kd 61.98
- *      M92 X80.25 Y80.25 Z400.00 E95.00
+ *      M92 X80.5 Y80.5 Z400.00 E95.00
  * 
  * V34 06/27/2021 14:50
  * 

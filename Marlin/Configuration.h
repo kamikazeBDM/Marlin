@@ -944,7 +944,7 @@
 
 //#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 500 }
 //#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80.25, 80.25, 400.00, 90.00 }    // 08/31/2021  -- PRE BMG Extruder upgrade
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80.25, 80.25, 400.00, 350.00 }    // 09/07/2021 -- BMG dual drive clone extruder installed
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80.35, 80.35, 400.00, 350.00 }    // 09/10/2021 -- BMG dual drive clone extruder installed
 
 
 /**
@@ -1901,8 +1901,8 @@
 // Preheat Constants - Up to 5 are supported without changes
 //
 #define PREHEAT_1_LABEL       "PLA+"
-#define PREHEAT_1_TEMP_HOTEND 227
-#define PREHEAT_1_TEMP_BED     57
+#define PREHEAT_1_TEMP_HOTEND 235
+#define PREHEAT_1_TEMP_BED     55
 #define PREHEAT_1_TEMP_CHAMBER 0
 #define PREHEAT_1_FAN_SPEED     0 // Value from 0 to 255
 
@@ -1927,10 +1927,10 @@
 
 #if ENABLED(NOZZLE_PARK_FEATURE)
   // Specify a park position as { X, Y, Z_raise }
-  #define NOZZLE_PARK_POINT { (X_MIN_POS + 10), (Y_MAX_POS - 10), 20 }
+  #define NOZZLE_PARK_POINT { (X_MIN_POS + 10), (Y_MIN_POS + 10), 10 }
   //#define NOZZLE_PARK_X_ONLY          // X move only is required to park
   //#define NOZZLE_PARK_Y_ONLY          // Y move only is required to park
-  #define NOZZLE_PARK_Z_RAISE_MIN   2   // (mm) Always raise Z by at least this distance
+  #define NOZZLE_PARK_Z_RAISE_MIN   4   // (mm) Always raise Z by at least this distance
   #define NOZZLE_PARK_XY_FEEDRATE 100   // (mm/s) X and Y axes feedrate (also used for delta Z axis)
   #define NOZZLE_PARK_Z_FEEDRATE    5   // (mm/s) Z axis feedrate (not used for delta printers)
 #endif
