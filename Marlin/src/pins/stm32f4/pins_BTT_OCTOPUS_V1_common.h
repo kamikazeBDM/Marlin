@@ -230,7 +230,9 @@
 #define TEMP_BED_PIN                        PF3   // TB
 #define TEMP_1_PIN                          PF5   // TH1
 #define TEMP_2_PIN                          PF6   // TH2
-#define TEMP_3_PIN                          PF7   // TH3
+#define TEMP_3_PIN                          PF7   // TH3     TEMP_SENSOR_CHAMBER
+#define TEMP_CHAMBER_PIN                    TEMP_3_PIN    // TEMP_SENSOR_CHAMBER
+
 
 //
 // Heaters / Fans
@@ -238,14 +240,14 @@
 #define HEATER_BED_PIN                      PA1   // Hotbed
 #define HEATER_0_PIN                        PA2   // Heater0
 #define HEATER_1_PIN                        PA3   // Heater1
-#define HEATER_2_PIN                        PB10  // Heater2
-#define HEATER_3_PIN                        PB11  // Heater3
+#define HEATER_2_PIN                        PB10  // Heater2  HEATER_CHAMBER_PIN
+#define HEATER_3_PIN                        PB11  // Heater3  
 
-#define FAN_PIN                             PA8   // Fan0
-#define FAN1_PIN                            PE5   // Fan1
-#define FAN2_PIN                            PD12  // Fan2
-#define FAN3_PIN                            PD13  // Fan3
-#define FAN4_PIN                            PD14  // Fan4
+#define FAN_PIN                             PA8   // Fan0   FAN1_PIN
+#define FAN1_PIN                            PE5   // Fan1   PART COOLING FAN EXT 1
+#define FAN2_PIN                            PD12  // Fan2   PART COOLING FAN EXT 2
+#define FAN3_PIN                            PD13  // Fan3   CONTROLLER_FAN_PIN
+#define FAN4_PIN                            PD14  // Fan4   CHAMBER_AUTO_FAN_PIN
 #define FAN5_PIN                            PD15  // Fan5
 
 //
