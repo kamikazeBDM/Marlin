@@ -45,6 +45,13 @@
  * !! BigTreeTech Octopus Pro V1.0 (STM32F429ZGT6 ARM Cortex-M4)
  * !! GitHub: kamikazebdm@gmail.com -> brendon@m2mwireless.com ( collaborator )
  * 
+ * V03  02/19/2022 13:15
+ * 
+ *      UPDATES: MARLIN upstream bugfix-2.0(.9.3)  12/31/2021
+ * 
+ *          HOST_ACTION_COMMANDS
+ *          NOZZLE_PARK_FEATURE
+ * 
  * V03  02/07/2022 14:22  
  * 
  *          !! WORKING: !! - all printer functions working normally. 
@@ -201,7 +208,7 @@
  * here we define this default string as the date where the latest release
  * version was tagged.
  */
-//#define STRING_DISTRIBUTION_DATE "2022-02-02"
+#define STRING_DISTRIBUTION_DATE "2022-02-19"
 
 /**
  * Defines a generic printer name to be output to the LCD after booting Marlin.
