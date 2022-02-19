@@ -43,8 +43,16 @@
  * 
  * !! BOARD_BTT_OCTOPUS_PRO_V1_0  <-- BUILD TARGET 
  * !! BigTreeTech Octopus Pro V1.0 (STM32F429ZGT6 ARM Cortex-M4)
+ * !! GitHub: kamikazebdm@gmail.com -> brendon@m2mwireless.com ( collaborator )
  * 
- * V03  02/06/2022 13:12  
+ * V03  02/07/2022 14:22  
+ * 
+ *          !! WORKING: !! - all printer functions working normally. 
+ *          !! PENDING: !! - Enclosure setup and control - need to remake Enclosure and reconfigure wiring
+ * 
+ *          FORKCREATED: New fork from Marlin -> kamikazebdm@gmail.com OWNER. 
+ *          SETTINGS:   Settings copied from BTT GTR v1.0
+ *  
  *          M92 X80.6250 Y80.6250 Z402.0000
  *          M92 T0 E397.1500
  *          M92 T1 E397.1500
@@ -73,7 +81,7 @@
  *          M569 S1 T0 E
  *          M569 S1 T1 E
  *          #define FAST_PWM_FAN
- *            #define FAST_PWM_FAN_FREQUENCY 39200 
+ *            #define FAST_PWM_FAN_FREQUENCY 39200 (39.2Khz)
  *          #define Z_AFTER_HOMING   10
  *          #define ENCODER_PULSES_PER_STEP 4
  *          #define SD_ABORT_NO_COOLDOWN          // Leave the heaters on after Stop Print (not recommended!)
