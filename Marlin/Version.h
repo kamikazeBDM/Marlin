@@ -30,7 +30,7 @@
  * Marlin bugfix-2.0.x
  * Compiled version identifier
  ************************************/
-#define COMPILE_VERSION "03" 
+#define COMPILE_VERSION "04" 
 
 #define SHORT_BUILD_VERSION "bugfix-2.0.9.3-" COMPILE_VERSION
 #define STRING_CONFIG_H_AUTHOR "BDM"                    // Who made the changes.
@@ -45,12 +45,60 @@
  * !! BigTreeTech Octopus Pro V1.0 (STM32F429ZGT6 ARM Cortex-M4)
  * !! GitHub: kamikazebdm@gmail.com -> brendon@m2mwireless.com ( collaborator )
  * 
- * V03  02/19/2022 13:15
+ * V05  02/20/2022 08:50
+ *      
+ *      
+ *  
+ * V04  02/19/2022 17:50
  * 
- *      UPDATES: MARLIN upstream bugfix-2.0(.9.3)  12/31/2021
+ *      UPDATES: MARLIN upstream bugfix-2.0(.9.3)  02/19/2022
+ *      
+ *          #define FAST_PWM_FAN    // Increase the fan PWM frequency. Removes the PWM noise but increases heating in the FET/Arduino
+ *          #define FAST_PWM_FAN_FREQUENCY 1220  
+ *          #define FAN_MIN_PWM 30
+ *          //#define FAN_SOFT_PWM
+ *          #define FAN_KICKSTART_TIME 300
  * 
  *          HOST_ACTION_COMMANDS
  *          NOZZLE_PARK_FEATURE
+ * 
+ *          CASE_LIGHT_ENABLE
+ *          #define CASE_LIGHT_MENU    
+ *          #define CASE_LIGHT_PIN          PG12 ( STOP 4 PIN )         !! ******************* !!
+ *          #define CASE_LIGHT_NO_BRIGHTNESS 
+ * 
+ *          #define HEATER_CHAMBER_PIN      PG13 ( STOP 5 PIN )         !! ******************* !!
+ *          #define HEATER_CHAMBER_INVERTING true
+ * 
+ *          #define CHAMBER_AUTO_FAN_PIN FAN4_PIN
+ *          #define CHAMBER_AUTO_FAN_TEMPERATURE 55
+ *          #define CHAMBER_AUTO_FAN_SPEED 128
+ *          #define CHAMBER_FAN_MODE      2  
+ *          #define CHAMBER_FAN_BASE      0    // Minimum chamber fan PWM (0-255)
+ *          #define CHAMBER_FAN_FACTOR    5    // PWM increase per °C difference from target
+ *          #define TEMP_CHAMBER_PIN          TEMP_2_PIN    // TEMP_SENSOR_CHAMBER
+ * 
+ *          #define NO_AUTO_ASSIGN_WARNING
+ *          #define DIAG_JUMPERS_REMOVED
+ * 
+ *          #define DEFAULT_AXIS_STEPS_PER_UNIT  { 80.500, 80.300, 400.3000, 371.0000, 371.0000 }
+ *          #define DEFAULT_MAX_FEEDRATE          { 200.00, 200.00, 12, 500, 500 }
+ *          
+ *          #define X_CURRENT       880 
+ *          #define Y_CURRENT       860
+ *          #define Z_CURRENT       900
+ *          #define E0_CURRENT      640
+ *          #define E1_CURRENT      640    
+ *  
+ *          //#define STEALTHCHOP_XY
+ *            #define STEALTHCHOP_Z
+ *          //#define STEALTHCHOP_E
+ * 
+ *          #define CONTROLLER_FAN_IGNORE_Z  
+ *          #define CONTROLLERFAN_SPEED_ACTIVE      128
+ *          #define CONTROLLERFAN_SPEED_IDLE        20 
+ *          #define CONTROLLERFAN_IDLE_TIME         10
+ * 
  * 
  * V03  02/07/2022 14:22  
  * 
@@ -150,7 +198,7 @@
  * here we define this default string as the date where the latest release
  * version was tagged.
  */
-#define STRING_DISTRIBUTION_DATE "2021-12-31"
+#define STRING_DISTRIBUTION_DATE "2022-02-19"
 
 /**
  * Defines a generic printer name to be output to the LCD after booting Marlin.
@@ -183,61 +231,3 @@
 //#define  USB_DEVICE_VENDOR_ID           0x0000
 //#define  USB_DEVICE_PRODUCT_ID          0x0000
 //#define  USB_DEVICE_MANUFACTURE_NAME    WEBSITE_URL
-
-
-
-
-
-////////////////////////////
-// VENDOR VERSION EXAMPLE //
-////////////////////////////
-
-/**
- * Marlin release version identifier
- */
-//#define SHORT_BUILD_VERSION "bugfix-2.0.x"
-
-/**
- * Verbose version identifier which should contain a reference to the location
- * from where the binary was downloaded or the source code was compiled.
- */
-//#define DETAILED_BUILD_VERSION SHORT_BUILD_VERSION
-
-/**
- * The STRING_DISTRIBUTION_DATE represents when the binary file was built,
- * here we define this default string as the date where the latest release
- * version was tagged.
- */
-#define STRING_DISTRIBUTION_DATE "2022-02-19"
-
-/**
- * Defines a generic printer name to be output to the LCD after booting Marlin.
- */
-//#define MACHINE_NAME "3D Printer"
-
-/**
- * The SOURCE_CODE_URL is the location where users will find the Marlin Source
- * Code which is installed on the device. In most cases —unless the manufacturer
- * has a distinct Github fork— the Source Code URL should just be the main
- * Marlin repository.
- */
-//#define SOURCE_CODE_URL "github.com/MarlinFirmware/Marlin"
-
-/**
- * Default generic printer UUID.
- */
-//#define DEFAULT_MACHINE_UUID "cede2a2f-41a2-4748-9b12-c55c62f367ff"
-
-/**
- * The WEBSITE_URL is the location where users can get more information such as
- * documentation about a specific Marlin release.
- */
-//#define WEBSITE_URL "marlinfw.org"
-
-/**
- * Set the vendor info the serial USB interface, if changable
- * Currently only supported by DUE platform
- */
-//#define USB_DEVICE_VENDOR_ID           0x0000
-//#define USB_DEVICE_PRODUCT_ID          0x0000
-//#define USB_DEVICE_MANUFACTURE_NAME    WEBSITE_URL

@@ -785,7 +785,7 @@
  * Note: For Bowden Extruders make this large enough to allow load/unload.
  */
 #define PREVENT_LENGTHY_EXTRUDE
-#define EXTRUDE_MAXLENGTH 1000
+#define EXTRUDE_MAXLENGTH 2000
 
 //===========================================================================
 //======================== Thermal Runaway Protection =======================
@@ -999,7 +999,7 @@
  */
 //#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 500, 500 }
 //#define DEFAULT_AXIS_STEPS_PER_UNIT  { 1290.000, 1290.000, 6432.000, 5671.2625, 5671.2625 }
-#define DEFAULT_AXIS_STEPS_PER_UNIT  { 80.6250, 80.6250, 402.0000, 397.0000, 397.0000 }
+#define DEFAULT_AXIS_STEPS_PER_UNIT  { 80.500, 80.300, 400.3000, 371.0000, 371.0000 }
 
 /**
  * Default Max Feed Rate (mm/s)
@@ -1007,7 +1007,7 @@
  *                                      X, Y, Z [, I [, J [, K]]], E0 [, E1[, E2...]]
  */
 //#define DEFAULT_MAX_FEEDRATE          { 200, 200, 5, 25 }
-#define DEFAULT_MAX_FEEDRATE          { 180.00, 180.00, 12, 200, 200 }
+#define DEFAULT_MAX_FEEDRATE          { 200.00, 200.00, 12, 500, 500 }
 
 //#define LIMITED_MAX_FR_EDITING        // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2
 #if ENABLED(LIMITED_MAX_FR_EDITING)
@@ -1021,7 +1021,7 @@
  *                                      X, Y, Z [, I [, J [, K]]], E0 [, E1[, E2...]]
  */
 //#define DEFAULT_MAX_ACCELERATION      { 3000, 3000, 100, 10000 }
-#define DEFAULT_MAX_ACCELERATION      { 2000, 2000, 200, 8000, 8000 }
+#define DEFAULT_MAX_ACCELERATION      { 500, 500, 100, 9000, 9000 }
 
 #define LIMITED_MAX_ACCEL_EDITING     // Limit edit via M201 or LCD to DEFAULT_MAX_ACCELERATION * 2
 #if ENABLED(LIMITED_MAX_ACCEL_EDITING)
@@ -1040,9 +1040,9 @@
 //#define DEFAULT_RETRACT_ACCELERATION  1000    // E acceleration for retracts
 //#define DEFAULT_TRAVEL_ACCELERATION   1000    // X, Y, Z acceleration for travel (non printing) moves
 
-#define DEFAULT_ACCELERATION          750     // X, Y, Z and E acceleration for printing moves
+#define DEFAULT_ACCELERATION          500     // X, Y, Z and E acceleration for printing moves
 #define DEFAULT_RETRACT_ACCELERATION  1000    // E acceleration for retracts
-#define DEFAULT_TRAVEL_ACCELERATION   1000     // X, Y, Z acceleration for travel (non printing) moves
+#define DEFAULT_TRAVEL_ACCELERATION   1500    // X, Y, Z acceleration for travel (non printing) moves
 
 
 /**
@@ -1070,6 +1070,7 @@
   #endif
 #endif
 
+
 #define DEFAULT_EJERK    10.0  // May be used by Linear Advance
 
 /**
@@ -1080,7 +1081,7 @@
  *   https://blog.kyneticcnc.com/2018/10/computing-junction-deviation-for-marlin.html
  */
 #if DISABLED(CLASSIC_JERK)
-  #define JUNCTION_DEVIATION_MM 0.018 // (mm) Distance from real junction edge
+  #define JUNCTION_DEVIATION_MM 0.013 // (mm) Distance from real junction edge
   #define JD_HANDLE_SMALL_SEGMENTS    // Use curvature estimation instead of just the junction angle
                                       // for small segments (< 1mm) with large junction angles (> 135°).
 #endif
@@ -2945,7 +2946,7 @@
 // Use software PWM to drive the fan, as for the heaters. This uses a very low frequency
 // which is not as annoying as with the hardware PWM. On the other hand, if this frequency
 // is too low, you should also increment SOFT_PWM_SCALE.
-//#define FAN_SOFT_PWM
+#define FAN_SOFT_PWM
 
 // Incrementing this by 1 will double the software PWM frequency,
 // affecting heaters, and the fan if FAN_SOFT_PWM is enabled.
@@ -3013,7 +3014,7 @@
 #define NEOPIXEL_LED
 #if ENABLED(NEOPIXEL_LED)
   #define NEOPIXEL_TYPE   NEO_GRB // NEO_GRBW / NEO_GRB - four/three channel driver type (defined in Adafruit_NeoPixel.h)
-  #define NEOPIXEL_PIN     PB0     // LED driving pin
+  //#define NEOPIXEL_PIN     PB0     // LED driving pin
   //#define NEOPIXEL2_TYPE NEOPIXEL_TYPE
   //#define NEOPIXEL2_PIN    5
   #define NEOPIXEL_PIXELS 134       // Number of LEDs in the strip. (Longest strip when NEOPIXEL2_SEPARATE is disabled.)

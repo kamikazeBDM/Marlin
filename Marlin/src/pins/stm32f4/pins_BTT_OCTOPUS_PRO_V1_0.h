@@ -21,7 +21,11 @@
  */
 #pragma once
 
+
 #define BOARD_INFO_NAME "BTT OCTOPUS PRO V1.0"
+
+#define DIAG_JUMPERS_REMOVED
+#define NO_AUTO_ASSIGN_WARNING
 
 //
 // Temperature Sensors

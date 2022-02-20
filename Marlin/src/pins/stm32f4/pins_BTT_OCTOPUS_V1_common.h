@@ -147,6 +147,7 @@
 //
 #define FIL_RUNOUT_PIN                      PG12  // E0DET
 #define FIL_RUNOUT2_PIN                     PG13  // E1DET
+
 #define FIL_RUNOUT3_PIN                     PG14  // E2DET
 #define FIL_RUNOUT4_PIN                     PG15  // E3DET
 
@@ -228,10 +229,11 @@
 // Temperature Sensors
 //
 #define TEMP_BED_PIN                        PF3   // TB
+//#define TEMP_0_PIN                        PF4   // TH0
 #define TEMP_1_PIN                          PF5   // TH1
 #define TEMP_2_PIN                          PF6   // TH2
 #define TEMP_3_PIN                          PF7   // TH3     TEMP_SENSOR_CHAMBER
-#define TEMP_CHAMBER_PIN                    TEMP_3_PIN    // TEMP_SENSOR_CHAMBER
+#define TEMP_CHAMBER_PIN                    TEMP_2_PIN    // TEMP_SENSOR_CHAMBER
 
 
 //
