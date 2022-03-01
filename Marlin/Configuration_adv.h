@@ -189,9 +189,9 @@
 // Heated Chamber options
 //
 #if DISABLED(PIDTEMPCHAMBER)
-  #define CHAMBER_CHECK_INTERVAL 1000   // (ms) Interval between checks in bang-bang control
+  #define CHAMBER_CHECK_INTERVAL 2000   // (ms) Interval between checks in bang-bang control
   #if ENABLED(CHAMBER_LIMIT_SWITCHING)
-    #define CHAMBER_HYSTERESIS 2        // (°C) Only set the relevant heater state when ABS(T-target) > CHAMBER_HYSTERESIS
+    #define CHAMBER_HYSTERESIS 1        // (°C) Only set the relevant heater state when ABS(T-target) > CHAMBER_HYSTERESIS
   #endif
 #endif
 
@@ -211,11 +211,13 @@
     //#define CHAMBER_FAN_INDEX   2   // Index of a fan to repurpose as the chamber fan. (Default: first unused fan)
 
     #define CHAMBER_FAN_MODE      1   // Fan control mode: 0=Static; 1=Linear increase when temp is higher than target; 2=V-shaped curve; 3=similar to 1 but fan is always on.
+    
     #if CHAMBER_FAN_MODE == 0
       #define CHAMBER_FAN_BASE  255   // Chamber fan PWM (0-255)
+
     #elif CHAMBER_FAN_MODE == 1
       #define CHAMBER_FAN_BASE  0   // Base chamber fan PWM (0-255); turns on when chamber temperature is above the target
-      #define CHAMBER_FAN_FACTOR 5   // PWM increase per °C above target
+      #define CHAMBER_FAN_FACTOR 2   // PWM increase per °C above target
     
     #elif CHAMBER_FAN_MODE == 2
       #define CHAMBER_FAN_BASE   0   // Minimum chamber fan PWM (0-255)
@@ -599,21 +601,30 @@
  */
 #define FAST_PWM_FAN    // Increase the fan PWM frequency. Removes the PWM noise but increases heating in the FET/Arduino
 #if ENABLED(FAST_PWM_FAN)
-  #define FAST_PWM_FAN_FREQUENCY 1220  // Define here to override the defaults below
+  //#define FAST_PWM_FAN_FREQUENCY 1220  // Define here to override the defaults below
   //#define USE_OCR2A_AS_TOP
   #ifndef FAST_PWM_FAN_FREQUENCY
     #ifdef __AVR__
       #define FAST_PWM_FAN_FREQUENCY ((F_CPU) / (2 * 255 * 1))
     #else
-      #define FAST_PWM_FAN_FREQUENCY 1000U
+//      #define FAST_PWM_FAN_FREQUENCY 1000U
+      #define FAST_PWM_FAN_FREQUENCY 5000U
     #endif
   #endif
 #endif
+
+
+
+
 
 /**
  * Use one of the PWM fans as a redundant part-cooling fan
  */
 //#define REDUNDANT_PART_COOLING_FAN 2  // Index of the fan to sync with FAN 0.
+
+
+
+
 
 // @section extruder
 
@@ -686,6 +697,9 @@
 //#define E7_FAN_TACHO_PULLUP
 //#define E7_FAN_TACHO_PULLDOWN
 
+
+
+
 /**
  * Part-Cooling Fan Multiplexer
  *
@@ -696,6 +710,9 @@
 #define FANMUX0_PIN -1
 #define FANMUX1_PIN -1
 #define FANMUX2_PIN -1
+
+
+
 
 /**
  * M355 Case Light on-off / brightness
@@ -2030,7 +2047,7 @@
 #define LIN_ADVANCE
 #if ENABLED(LIN_ADVANCE)
   //#define EXTRA_LIN_ADVANCE_K // Enable for second linear advance constants
-  #define LIN_ADVANCE_K 0.22    // Unit: mm compression per 1mm/s extruder speed
+  #define LIN_ADVANCE_K 0.00    // Unit: mm compression per 1mm/s extruder speed
   //#define LA_DEBUG            // If enabled, this will generate debug information output over USB.
   #define EXPERIMENTAL_SCURVE // Enable this option to permit S-Curve Acceleration
   #define ALLOW_LOW_EJERK     // Allow a DEFAULT_EJERK value of <10. Recommended for direct drive hotends.
@@ -2380,6 +2397,13 @@
 // For serial echo, the number of digits after the decimal point
 #define SERIAL_FLOAT_PRECISION 4
 
+
+
+
+
+
+
+
 // @section extras
 
 /**
@@ -2390,6 +2414,10 @@
  *   'M106 P<fan> T1'     : Restore the previous fan speed
  */
 //#define EXTRA_FAN_SPEED
+
+
+
+
 
 /**
  * Firmware-based and LCD-controlled retract
@@ -4024,9 +4052,11 @@
 #if ENABLED(HOST_ACTION_COMMANDS)
   #define HOST_PAUSE_M76                // Tell the host to pause in response to M76
   #define HOST_PROMPT_SUPPORT           // Initiate host prompts to get user feedback
+  
   #if ENABLED(HOST_PROMPT_SUPPORT)
-    #define HOST_STATUS_NOTIFICATIONS   // Send some status messages to the host as notifications
+    //#define HOST_STATUS_NOTIFICATIONS   // Send some status messages to the host as notifications
   #endif
+
   #define HOST_START_MENU_ITEM          // Add a menu item that tells the host to start
   #define HOST_SHUTDOWN_MENU_ITEM       // Add a menu item that tells the host to shut down
 #endif

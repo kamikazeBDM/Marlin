@@ -30,7 +30,7 @@
  * Marlin bugfix-2.0.x
  * Compiled version identifier
  ************************************/
-#define COMPILE_VERSION "04" 
+#define COMPILE_VERSION "05" 
 
 #define SHORT_BUILD_VERSION "bugfix-2.0.9.3-" COMPILE_VERSION
 #define STRING_CONFIG_H_AUTHOR "BDM"                    // Who made the changes.
@@ -45,10 +45,23 @@
  * !! BigTreeTech Octopus Pro V1.0 (STM32F429ZGT6 ARM Cortex-M4)
  * !! GitHub: kamikazebdm@gmail.com -> brendon@m2mwireless.com ( collaborator )
  * 
- * V05  02/20/2022 08:50
- *      
- *      
+ * V05  02/20/2022 10:54
+ * 
+ *          #define CHAMBER_HYSTERESIS 1
+ *          #define CHAMBER_FAN_FACTOR 2 
+ *          #define CHAMBER_CHECK_INTERVAL 1000    
  *  
+ *          //#define FAST_PWM_FAN_FREQUENCY 1220    
+ *              #define FAST_PWM_FAN_FREQUENCY 5000U
+ * 
+ *          //#define HOST_STATUS_NOTIFICATIONS
+ * 
+ *          #define CHAMBER_FAN_MODE      1  
+ *          #define CHAMBER_FAN_BASE      0                     // Minimum chamber fan PWM (0-255)
+ *          #define CHAMBER_FAN_FACTOR    2                     // PWM increase per °C difference from target * 
+ *          #define CHAMBER_CHECK_INTERVAL 2000   // (ms) Interval between checks in bang-bang control
+ *          #define LIN_ADVANCE_K 0.00 
+ * 
  * V04  02/19/2022 17:50
  * 
  *      UPDATES: MARLIN upstream bugfix-2.0(.9.3)  02/19/2022
@@ -74,15 +87,15 @@
  *          #define CHAMBER_AUTO_FAN_TEMPERATURE 55
  *          #define CHAMBER_AUTO_FAN_SPEED 128
  *          #define CHAMBER_FAN_MODE      2  
- *          #define CHAMBER_FAN_BASE      0    // Minimum chamber fan PWM (0-255)
- *          #define CHAMBER_FAN_FACTOR    5    // PWM increase per °C difference from target
- *          #define TEMP_CHAMBER_PIN          TEMP_2_PIN    // TEMP_SENSOR_CHAMBER
+ *          #define CHAMBER_FAN_BASE      0                     // Minimum chamber fan PWM (0-255)
+ *          #define CHAMBER_FAN_FACTOR    5                     // PWM increase per °C difference from target
+ *          #define TEMP_CHAMBER_PIN          TEMP_2_PIN        // TEMP_SENSOR_CHAMBER
  * 
  *          #define NO_AUTO_ASSIGN_WARNING
  *          #define DIAG_JUMPERS_REMOVED
  * 
  *          #define DEFAULT_AXIS_STEPS_PER_UNIT  { 80.500, 80.300, 400.3000, 371.0000, 371.0000 }
- *          #define DEFAULT_MAX_FEEDRATE          { 200.00, 200.00, 12, 500, 500 }
+ *          #define DEFAULT_MAX_FEEDRATE         { 200.00, 200.00, 12, 500, 500 }
  *          
  *          #define X_CURRENT       880 
  *          #define Y_CURRENT       860
