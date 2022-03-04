@@ -30,7 +30,7 @@
  * Marlin bugfix-2.0.x
  * Compiled version identifier
  ************************************/
-#define COMPILE_VERSION "05" 
+#define COMPILE_VERSION "06" 
 
 #define SHORT_BUILD_VERSION "bugfix-2.0.9.3-" COMPILE_VERSION
 #define STRING_CONFIG_H_AUTHOR "BDM"                    // Who made the changes.
@@ -44,6 +44,14 @@
  * !! BOARD_BTT_OCTOPUS_PRO_V1_0  <-- BUILD TARGET 
  * !! BigTreeTech Octopus Pro V1.0 (STM32F429ZGT6 ARM Cortex-M4)
  * !! GitHub: kamikazebdm@gmail.com -> brendon@m2mwireless.com ( collaborator )
+ * 
+ * V06  03/03/2022 17:28
+ * 
+ *      UPDATES: MARLIN upstream bugfix-2.0(.9.3)  03/01/2022
+ *          #define MINIMUM_STEPPER_PULSE 0
+ *          #define MAXIMUM_STEPPER_RATE 5000000
+ *          #define SQUARE_WAVE_STEPPING
+ *          #define LED_USER_PRESET_STARTUP       // Have the printer display the user preset color on startup
  * 
  * V05  02/20/2022 10:54
  * 
