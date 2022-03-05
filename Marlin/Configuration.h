@@ -648,20 +648,26 @@
   //
   // E0:  Kp: 17.1585 Ki: 1.4116 Kd: 52.1403  |  M301 E0 P17.1585 I1.4116 D52.1403
   // E1:  Kp: 15.4397 Ki: 1.0324 Kd: 57.7252  |  M301 E1 P15.4397 I1.0324 D57.7252
+  //
+  // 03/04/2022 
+  //             M301 E0 P12.6815 I0.9789 D41.0721
+  //             M301 E1 P16.1975 I1.1192 D58.6044  
+  //             M304 P146.2618 I28.5835 D498.9479
   //////////////////////////////////////////
 
   #if ENABLED(PID_PARAMS_PER_HOTEND)
     // Specify up to one value per hotend here, according to your setup.
     // If there are fewer values, the last one applies to the remaining hotends.
-    #define DEFAULT_Kp_LIST {  17.1585,  15.4397 }
-    #define DEFAULT_Ki_LIST {   1.4116,   1.0324 }
-    #define DEFAULT_Kd_LIST {  52.1403,  57.7252 }
+    #define DEFAULT_Kp_LIST {  12.6815,  16.1975 }
+    #define DEFAULT_Ki_LIST {   0.9789,   1.1192 }
+    #define DEFAULT_Kd_LIST {  41.0721,  58.6044 }
   #else
     #define DEFAULT_Kp  22.20
     #define DEFAULT_Ki   1.08
     #define DEFAULT_Kd 114.00
   #endif
 #endif // PIDTEMP
+
 
 //===========================================================================
 //====================== PID > Bed Temperature Control ======================
@@ -709,11 +715,15 @@
   // M303 E-1 S90 C8 U1
   //
   // BED: Kp: 143.794 Ki: 28.0932 Kd: 490.675 | M304 P143.7948 I28.0932 D490.6759
+  //
+  // 03/04/2022
+  // M304 P146.2618 I28.5835 D498.9479
+
   //////////////////////////////////////////
 
-#define DEFAULT_bedKp 143.794
-#define DEFAULT_bedKi 28.0932
-#define DEFAULT_bedKd 490.675
+#define DEFAULT_bedKp 146.2618
+#define DEFAULT_bedKi 28.5835
+#define DEFAULT_bedKd 498.9479
 
 #endif // PIDTEMPBED
 
@@ -3011,6 +3021,19 @@
 #endif
 
 
+
+/*************************************************************   
+  #define LEDColorOrange()        LEDColor(255,  25,   0)
+  #define LEDColorYellow()        LEDColor(255,  75,   0)
+  #define LEDColorOrange()        LEDColor(255,  80,   0)
+  #define LEDColorYellow()        LEDColor(255, 255,   0)
+  #define LEDColorGreen()         LEDColor(  0, 255,   0)
+  #define LEDColorBlue()          LEDColor(  0,   0, 255)
+  #define LEDColorIndigo()        LEDColor(  0, 255, 255)
+  #define LEDColorViolet()        LEDColor(255,   0, 255)
+**************************************************************/
+
+
 // Support for Adafruit NeoPixel LED driver
 #define NEOPIXEL_LED
 #if ENABLED(NEOPIXEL_LED)
@@ -3020,7 +3043,7 @@
   //#define NEOPIXEL2_PIN    5
   #define NEOPIXEL_PIXELS 134       // Number of LEDs in the strip. (Longest strip when NEOPIXEL2_SEPARATE is disabled.)
   #define NEOPIXEL_IS_SEQUENTIAL   // Sequential display for temperature change - LED by LED. Disable to change all LEDs at once.
-  #define NEOPIXEL_BRIGHTNESS 255  // Initial brightness (0-255)
+  #define NEOPIXEL_BRIGHTNESS 127  // Initial brightness (0-255)
   #define NEOPIXEL_STARTUP_TEST  // Cycle through colors at startup
 
   // Support for second Adafruit NeoPixel LED driver controlled with M150 S1 ...

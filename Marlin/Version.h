@@ -30,7 +30,7 @@
  * Marlin bugfix-2.0.x
  * Compiled version identifier
  ************************************/
-#define COMPILE_VERSION "06" 
+#define COMPILE_VERSION "08" 
 
 #define SHORT_BUILD_VERSION "bugfix-2.0.9.3-" COMPILE_VERSION
 #define STRING_CONFIG_H_AUTHOR "BDM"                    // Who made the changes.
@@ -44,6 +44,20 @@
  * !! BOARD_BTT_OCTOPUS_PRO_V1_0  <-- BUILD TARGET 
  * !! BigTreeTech Octopus Pro V1.0 (STM32F429ZGT6 ARM Cortex-M4)
  * !! GitHub: kamikazebdm@gmail.com -> brendon@m2mwireless.com ( collaborator )
+ *               
+ * V07  03/04/2022 12:42
+ * 
+ *      UPDATES: MARLIN upstream bugfix-2.0(.9.3)  03/04/2022
+ *          ** HEATER 03 - PB11 - Use for Case Light PWM - 
+ *              #define CASE_LIGHT_PIN HEATER_3_PIN       // (PB11) HEATER 03
+ *     **       #define CASE_LIGHT_MAX_PWM 255            // Limit PWM duty cycle (0-255) - PWM since we feed 12v from power adaptor - GND ONLY FROM PB11 PWM controlled GND
+ * 
+ *              ** PID TUNING **
+ *              M301 E0 P12.6815 I0.9789 D41.0721
+ *              M301 E1 P16.1975 I1.1192 D58.6044
+ *              M304 P146.2618 I28.5835 D498.9479
+ *              
+ *              #define NEOPIXEL_BRIGHTNESS 127  // Initial brightness (0-255)
  * 
  * V06  03/03/2022 17:28
  * 

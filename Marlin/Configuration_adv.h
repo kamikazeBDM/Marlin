@@ -197,7 +197,7 @@
 
 #if TEMP_SENSOR_CHAMBER
 
-  #define HEATER_CHAMBER_PIN      PG13   // Required heater on/off pin (example: SKR 1.4 Turbo HE1 plug)
+  #define HEATER_CHAMBER_PIN      E1_DIAG_PIN   // ( PG13) Required heater on/off pin (example: SKR 1.4 Turbo HE1 plug)
 
   #define HEATER_CHAMBER_INVERTING true
 
@@ -538,8 +538,8 @@
   //#define CONTROLLER_FAN_USE_Z_ONLY       // With this option only the Z axis is considered
   #define CONTROLLER_FAN_IGNORE_Z         // Ignore Z stepper. Useful when stepper timeout is disabled.
   #define CONTROLLERFAN_SPEED_MIN         0 // (0-255) Minimum speed. (If set below this value the fan is turned off.)
-  #define CONTROLLERFAN_SPEED_ACTIVE      100 // (0-255) Active speed, used when any motor is enabled
-  #define CONTROLLERFAN_SPEED_IDLE        25 // (0-255) Idle speed, used when motors are disabled
+  #define CONTROLLERFAN_SPEED_ACTIVE      128 // (0-255) Active speed, used when any motor is enabled
+  #define CONTROLLERFAN_SPEED_IDLE        64 // (0-255) Idle speed, used when motors are disabled
   #define CONTROLLERFAN_IDLE_TIME        10 // (seconds) Extra time to keep the fan running after disabling motors
 
   // Use TEMP_SENSOR_BOARD as a trigger for enabling the controller fan
@@ -720,19 +720,21 @@
 #define CASE_LIGHT_ENABLE
 #if ENABLED(CASE_LIGHT_ENABLE)
   
-  //#define CASE_LIGHT_PIN 4                  // Override the default pin if needed
-  #define CASE_LIGHT_PIN PG12                 // STOP 4
+//  //#define CASE_LIGHT_PIN 4                  // Override the default pin if needed
+//  #define CASE_LIGHT_PIN E0_DIAG_PIN                 // (PG12) STOP 4
+  #define CASE_LIGHT_PIN HEATER_3_PIN                 // (PB11) HEATER 03
 
 
   #define INVERT_CASE_LIGHT false             // Set true if Case Light is ON when pin is LOW
 
   #define CASE_LIGHT_DEFAULT_ON true          // Set default power-up state on
-  //#define CASE_LIGHT_DEFAULT_BRIGHTNESS 105   // Set default power-up brightness (0-255, requires PWM pin)
+  #define CASE_LIGHT_DEFAULT_BRIGHTNESS 255   // Set default power-up brightness (0-255, requires PWM pin)
 
-  #define CASE_LIGHT_NO_BRIGHTNESS          // Disable brightness control. Enable for non-PWM lighting.
-  //#define CASE_LIGHT_MAX_PWM 128            // Limit PWM duty cycle (0-255)
+  //#define CASE_LIGHT_NO_BRIGHTNESS          // Disable brightness control. Enable for non-PWM lighting.
+
+  #define CASE_LIGHT_MAX_PWM 255              // Limit PWM duty cycle (0-255) ( Limit to 128 for 12.5V ) - USE GND ONLY FROM PB11 <- PWM controlled ground
   
-  #define CASE_LIGHT_MENU                   // Add Case Light options to the LCD menu
+  #define CASE_LIGHT_MENU                     // Add Case Light options to the LCD menu
   
   #if ENABLED(NEOPIXEL_LED)
     //#define CASE_LIGHT_USE_NEOPIXEL         // Use NeoPixel LED as case light
@@ -1446,22 +1448,37 @@
   // Show the E position (filament used) during printing
   #define LCD_SHOW_E_TOTAL
 
+
+
+
+  /*************************************************************   
+  #define LEDColorOrange()        LEDColor(255,  25,   0)
+  #define LEDColorYellow()        LEDColor(255,  75,   0)
+  #define LEDColorOrange()        LEDColor(255,  80,   0)
+  #define LEDColorYellow()        LEDColor(255, 255,   0)
+  #define LEDColorGreen()         LEDColor(  0, 255,   0)
+  #define LEDColorBlue()          LEDColor(  0,   0, 255)
+  #define LEDColorIndigo()        LEDColor(  0, 255, 255)
+  #define LEDColorViolet()        LEDColor(255,   0, 255)
+**************************************************************/
+
   /**
    * LED Control Menu
    * Add LED Control to the LCD menu
    */
+
   #define LED_CONTROL_MENU
   #if ENABLED(LED_CONTROL_MENU)
     #define LED_COLOR_PRESETS                 // Enable the Preset Color menu option
     //#define NEO2_COLOR_PRESETS              // Enable a second NeoPixel Preset Color menu option
     #if ENABLED(LED_COLOR_PRESETS)
       #define LED_USER_PRESET_RED        255  // User defined RED value
-      #define LED_USER_PRESET_GREEN      0  // User defined GREEN value
-      #define LED_USER_PRESET_BLUE         255  // User defined BLUE value
-      #define LED_USER_PRESET_WHITE      0  // User defined WHITE value
+      #define LED_USER_PRESET_GREEN      0    // User defined GREEN value
+      #define LED_USER_PRESET_BLUE       255  // User defined BLUE value
+      #define LED_USER_PRESET_WHITE      0    // User defined WHITE value
       #define LED_USER_PRESET_BRIGHTNESS 128  // User defined intensity
 
-      #define LED_USER_PRESET_STARTUP       // Have the printer display the user preset color on startup
+      #define LED_USER_PRESET_STARTUP         // Have the printer display the user preset color on startup
 
     #endif
     #if ENABLED(NEO2_COLOR_PRESETS)

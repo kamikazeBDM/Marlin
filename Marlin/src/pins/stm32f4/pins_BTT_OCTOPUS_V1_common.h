@@ -53,7 +53,7 @@
 #define Z_DIAG_PIN                          PG10  // Z-STOP
 #define Z2_DIAG_PIN                         PG11  // Z2-STOP
 #define E0_DIAG_PIN                         PG12  // E0DET
-#define E1_DIAG_PIN                         PG13  // E1DET
+#define E1_DIAG_PIN                         PG13  // E1DET      // STOP 5  used for HEATER_CHAMBER_PIN
 #define E2_DIAG_PIN                         PG14  // E2DET
 #define E3_DIAG_PIN                         PG15  // E3DET
 
@@ -242,7 +242,7 @@
 #define HEATER_BED_PIN                      PA1   // Hotbed
 #define HEATER_0_PIN                        PA2   // Heater0
 #define HEATER_1_PIN                        PA3   // Heater1
-#define HEATER_2_PIN                        PB10  // Heater2  HEATER_CHAMBER_PIN
+#define HEATER_2_PIN                        PB10  // Heater2  
 #define HEATER_3_PIN                        PB11  // Heater3  
 
 #define FAN_PIN                             PA8   // Fan0   FAN1_PIN
