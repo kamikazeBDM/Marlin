@@ -45,6 +45,12 @@
  * !! BigTreeTech Octopus Pro V1.0 (STM32F429ZGT6 ARM Cortex-M4)
  * !! GitHub: kamikazebdm@gmail.com -> brendon@m2mwireless.com ( collaborator )
  *               
+ * V08  03/05/2022 xx:xx
+ * 
+ *      UPDATES: MARLIN upstream bugfix-2.0(.9.3)  03/05/2022
+ *            //#define SQUARE_WAVE_STEPPING
+ *          
+ * 
  * V07  03/04/2022 12:42
  * 
  *      UPDATES: MARLIN upstream bugfix-2.0(.9.3)  03/04/2022
