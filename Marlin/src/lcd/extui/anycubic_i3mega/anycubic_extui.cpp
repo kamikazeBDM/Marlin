@@ -42,9 +42,7 @@ namespace ExtUI {
   void onMediaError()     { AnycubicTFT.OnSDCardError(); }
   void onMediaRemoved()   { AnycubicTFT.OnSDCardStateChange(false); }
   void onPlayTone(const uint16_t frequency, const uint16_t duration) {
-    #if ENABLED(SPEAKER)
-      ::tone(BEEPER_PIN, frequency, duration);
-    #endif
+    TERN_(SPEAKER, ::tone(BEEPER_PIN, frequency, duration));
   }
   void onPrintTimerStarted()  { AnycubicTFT.OnPrintTimerStarted(); }
   void onPrintTimerPaused()   { AnycubicTFT.OnPrintTimerPaused(); }
@@ -83,12 +81,12 @@ namespace ExtUI {
     // Called after loading or resetting stored settings
   }
 
-  void onConfigurationStoreWritten(bool success) {
+  void onSettingsStored(bool success) {
     // Called after the entire EEPROM has been written,
     // whether successful or not.
   }
 
-  void onConfigurationStoreRead(bool success) {
+  void onSettingsLoaded(bool success) {
     // Called after the entire EEPROM has been read,
     // whether successful or not.
   }

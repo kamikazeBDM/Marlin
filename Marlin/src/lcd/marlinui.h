@@ -21,15 +21,12 @@
  */
 #pragma once
 
+#include "../inc/MarlinConfig.h"
 #include "../sd/cardreader.h"
 #include "../module/motion.h"
+#include "../libs/buzzer.h"
+
 #include "buttons.h"
-
-#include "../inc/MarlinConfig.h"
-
-#if HAS_BUZZER
-  #include "../libs/buzzer.h"
-#endif
 
 #if ENABLED(TOUCH_SCREEN_CALIBRATION)
   #include "tft_io/touch_calibration.h"
@@ -37,10 +34,6 @@
 
 #if ANY(HAS_MARLINUI_MENU, ULTIPANEL_FEEDMULTIPLY, SOFT_RESET_ON_KILL)
   #define HAS_ENCODER_ACTION 1
-#endif
-
-#if HAS_STATUS_MESSAGE
-  #define START_OF_UTF8_CHAR(C) (((C) & 0xC0u) != 0x80U)
 #endif
 
 #if E_MANUAL > 1
@@ -62,6 +55,8 @@
 #endif
 
 #define START_OF_UTF8_CHAR(C) (((C) & 0xC0u) != 0x80U)
+
+typedef bool (*statusResetFunc_t)();
 
 #if HAS_WIRED_LCD
 
@@ -194,6 +189,9 @@
 //////////// MarlinUI Singleton ////////////
 ////////////////////////////////////////////
 
+class MarlinUI;
+extern MarlinUI ui;
+
 class MarlinUI {
 public:
 
@@ -227,9 +225,9 @@ public:
   #endif
 
   #if ENABLED(SOUND_MENU_ITEM)
-    static bool buzzer_enabled; // Initialized by settings.load()
+    static bool sound_on; // Initialized by settings.load()
   #else
-    static constexpr bool buzzer_enabled = true;
+    static constexpr bool sound_on = true;
   #endif
 
   #if HAS_BUZZER
@@ -237,7 +235,7 @@ public:
   #endif
 
   FORCE_INLINE static void chirp() {
-    TERN_(HAS_CHIRP, buzz(LCD_FEEDBACK_FREQUENCY_DURATION_MS, LCD_FEEDBACK_FREQUENCY_HZ));
+    TERN_(HAS_CHIRP, TERN(HAS_BUZZER, buzz, BUZZ)(LCD_FEEDBACK_FREQUENCY_DURATION_MS, LCD_FEEDBACK_FREQUENCY_HZ));
   }
 
   #if ENABLED(LCD_HAS_STATUS_INDICATORS)
@@ -281,6 +279,14 @@ public:
     static uint16_t lcd_backlight_timeout;
     static millis_t backlight_off_ms;
     static void refresh_backlight_timeout();
+  #elif HAS_DISPLAY_SLEEP
+    #define SLEEP_TIMEOUT_MIN 0
+    #define SLEEP_TIMEOUT_MAX 99
+    static uint8_t sleep_timeout_minutes;
+    static millis_t screen_timeout_millis;
+    static void refresh_screen_timeout();
+    static void sleep_on();
+    static void sleep_off();
   #endif
 
   #if HAS_DWIN_E3V2_BASIC
@@ -346,6 +352,10 @@ public:
     static char status_message[];
     static uint8_t alert_level; // Higher levels block lower levels
 
+    #if HAS_STATUS_MESSAGE_TIMEOUT
+      static millis_t status_message_expire_ms; // Reset some status messages after a timeout
+    #endif
+
     #if ENABLED(STATUS_MESSAGE_SCROLLING)
       static uint8_t status_scroll_offset;
       static void advance_status_scroll();
@@ -356,16 +366,20 @@ public:
     static void reset_status(const bool no_welcome=false);
     static void set_alert_status(FSTR_P const fstr);
     static void reset_alert_level() { alert_level = 0; }
+
+    static statusResetFunc_t status_reset_callback;
+    static void set_status_reset_fn(const statusResetFunc_t fn=nullptr) { status_reset_callback = fn; }
   #else
     static constexpr bool has_status() { return false; }
     static void reset_status(const bool=false) {}
     static void set_alert_status(FSTR_P const) {}
     static void reset_alert_level() {}
+    static void set_status_reset_fn(const statusResetFunc_t=nullptr) {}
   #endif
 
   static void set_status(const char * const cstr, const bool persist=false);
   static void set_status(FSTR_P const fstr, const int8_t level=0);
-  static void status_printf(const uint8_t level, FSTR_P const fmt, ...);
+  static void status_printf(int8_t level, FSTR_P const fmt, ...);
 
   #if HAS_DISPLAY
 
@@ -680,7 +694,29 @@ public:
     #endif
 
     static void update_buttons();
-    static bool button_pressed() { return BUTTON_CLICK() || TERN(TOUCH_SCREEN, touch_pressed(), false); }
+
+    #if HAS_ENCODER_NOISE
+      #ifndef ENCODER_SAMPLES
+        #define ENCODER_SAMPLES 10
+      #endif
+
+      /**
+       * Some printers may have issues with EMI noise especially using a motherboard with 3.3V logic levels
+       * it may cause the logical LOW to float into the undefined region and register as a logical HIGH
+       * causing it to erroneously register as if someone clicked the button and in worst case make the
+       * printer unusable in practice.
+       */
+      static bool hw_button_pressed() {
+        LOOP_L_N(s, ENCODER_SAMPLES) {
+          if (!BUTTON_CLICK()) return false;
+          safe_delay(1);
+        }
+        return true;
+      }
+    #else
+      static bool hw_button_pressed() { return BUTTON_CLICK(); }
+    #endif
+
     #if EITHER(AUTO_BED_LEVELING_UBL, G26_MESH_VALIDATION)
       static void wait_for_release();
     #endif
@@ -712,8 +748,11 @@ public:
   #else
 
     static void update_buttons() {}
+    static bool hw_button_pressed() { return false; }
 
   #endif
+
+  static bool button_pressed() { return hw_button_pressed() || TERN0(TOUCH_SCREEN, touch_pressed()); }
 
   #if ENABLED(TOUCH_SCREEN_CALIBRATION)
     static void touch_calibration_screen();
@@ -746,8 +785,6 @@ private:
     #endif
   #endif
 };
-
-extern MarlinUI ui;
 
 #define LCD_MESSAGE_F(S)       ui.set_status(F(S))
 #define LCD_MESSAGE(M)         ui.set_status(GET_TEXT_F(M))

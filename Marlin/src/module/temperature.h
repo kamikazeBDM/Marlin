@@ -94,6 +94,18 @@ hotend_pid_t;
   #define _PID_Kf(H) 0
 #endif
 
+#if ENABLED(MPCTEMP)
+  typedef struct {
+    float heater_power;             // M306 P
+    float block_heat_capacity;      // M306 C
+    float sensor_responsiveness;    // M306 R
+    float ambient_xfer_coeff_fan0;  // M306 A
+    #if ENABLED(MPC_INCLUDE_FAN)
+      float fan255_adjustment;      // M306 F
+    #endif
+  } MPC_t;
+#endif
+
 /**
  * States for ADC reading in the ISR
  */
@@ -177,13 +189,17 @@ enum ADCSensorState : char {
 
 #if HAS_PID_HEATING
   #define PID_K2 (1-float(PID_K1))
-  #define PID_dT ((OVERSAMPLENR * float(ACTUAL_ADC_SAMPLES)) / TEMP_TIMER_FREQUENCY)
+  #define PID_dT ((OVERSAMPLENR * float(ACTUAL_ADC_SAMPLES)) / (TEMP_TIMER_FREQUENCY))
 
   // Apply the scale factors to the PID values
   #define scalePID_i(i)   ( float(i) * PID_dT )
   #define unscalePID_i(i) ( float(i) / PID_dT )
   #define scalePID_d(d)   ( float(d) / PID_dT )
   #define unscalePID_d(d) ( float(d) * PID_dT )
+#endif
+
+#if ENABLED(MPCTEMP)
+  #define MPC_dT ((OVERSAMPLENR * float(ACTUAL_ADC_SAMPLES)) / (TEMP_TIMER_FREQUENCY))
 #endif
 
 #if ENABLED(G26_MESH_VALIDATION) && EITHER(HAS_MARLINUI_MENU, EXTENSIBLE_UI)
@@ -223,8 +239,19 @@ struct PIDHeaterInfo : public HeaterInfo {
   T pid;  // Initialized by settings.load()
 };
 
+#if ENABLED(MPCTEMP)
+  struct MPCHeaterInfo : public HeaterInfo {
+    MPC_t constants;
+    float modeled_ambient_temp,
+          modeled_block_temp,
+          modeled_sensor_temp;
+  };
+#endif
+
 #if ENABLED(PIDTEMP)
   typedef struct PIDHeaterInfo<hotend_pid_t> hotend_info_t;
+#elif ENABLED(MPCTEMP)
+  typedef struct MPCHeaterInfo hotend_info_t;
 #else
   typedef heater_info_t hotend_info_t;
 #endif
@@ -402,10 +429,18 @@ class Temperature {
       static uint8_t soft_pwm_controller_speed;
     #endif
 
+    #if BOTH(HAS_MARLINUI_MENU, PREVENT_COLD_EXTRUSION) && E_MANUAL > 0
+      static bool allow_cold_extrude_override;
+      static void set_menu_cold_override(const bool allow) { allow_cold_extrude_override = allow; }
+    #else
+      static constexpr bool allow_cold_extrude_override = false;
+      static void set_menu_cold_override(const bool) {}
+    #endif
+
     #if ENABLED(PREVENT_COLD_EXTRUSION)
       static bool allow_cold_extrude;
       static celsius_t extrude_min_temp;
-      static bool tooCold(const celsius_t temp) { return allow_cold_extrude ? false : temp < extrude_min_temp - (TEMP_WINDOW); }
+      static bool tooCold(const celsius_t temp) { return !allow_cold_extrude && !allow_cold_extrude_override && temp < extrude_min_temp - (TEMP_WINDOW); }
       static bool tooColdToExtrude(const uint8_t E_NAME)       { return tooCold(wholeDegHotend(HOTEND_INDEX)); }
       static bool targetTooColdToExtrude(const uint8_t E_NAME) { return tooCold(degTargetHotend(HOTEND_INDEX)); }
     #else
@@ -481,8 +516,12 @@ class Temperature {
     #endif
 
     #if ENABLED(PID_EXTRUSION_SCALING)
-      static int32_t last_e_position, lpq[LPQ_MAX_LEN];
+      static int32_t pes_e_position, lpq[LPQ_MAX_LEN];
       static lpq_ptr_t lpq_ptr;
+    #endif
+
+    #if ENABLED(MPCTEMP)
+      static int32_t mpc_e_position;
     #endif
 
     #if HAS_HOTEND
@@ -677,7 +716,7 @@ class Temperature {
     /**
      * Call periodically to manage heaters
      */
-    static void manage_heater() _O2; // Added _O2 to work around a compiler error
+    static void manage_heater() __O2; // __O2 added to work around a compiler error
 
     /**
      * Preheating hotends
@@ -924,10 +963,14 @@ class Temperature {
        */
       #if ENABLED(PIDTEMP)
         static void updatePID() {
-          TERN_(PID_EXTRUSION_SCALING, last_e_position = 0);
+          TERN_(PID_EXTRUSION_SCALING, pes_e_position = 0);
         }
       #endif
 
+    #endif
+
+    #if ENABLED(MPCTEMP)
+      void MPC_autotune();
     #endif
 
     #if ENABLED(PROBING_HEATERS_OFF)
@@ -951,7 +994,7 @@ class Temperature {
     #endif // HEATER_IDLE_HANDLER
 
     #if HAS_TEMP_SENSOR
-      static void print_heater_states(const uint8_t target_extruder
+      static void print_heater_states(const int8_t target_extruder
         OPTARG(HAS_TEMP_REDUNDANT, const bool include_r=false)
       );
       #if ENABLED(AUTO_REPORT_TEMPERATURES)
@@ -961,9 +1004,9 @@ class Temperature {
     #endif
 
     #if HAS_HOTEND && HAS_STATUS_MESSAGE
-      static void set_heating_message(const uint8_t e);
+      static void set_heating_message(const uint8_t e, const bool isM104=false);
     #else
-      static void set_heating_message(const uint8_t) {}
+      static void set_heating_message(const uint8_t, const bool=false) {}
     #endif
 
     #if HAS_MARLINUI_MENU && HAS_TEMPERATURE

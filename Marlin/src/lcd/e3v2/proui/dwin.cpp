@@ -1702,7 +1702,7 @@ void DWIN_SetDataDefaults() {
     ApplyExtMinT();
   #endif
   #if BOTH(HAS_HEATED_BED, PREHEAT_BEFORE_LEVELING)
-    HMI_data.BedLevT = PREHEAT_1_TEMP_BED;
+    HMI_data.BedLevT = LEVELING_BED_TEMP;
   #endif
   TERN_(BAUD_RATE_GCODE, SetBaud250K());
 }
@@ -2090,7 +2090,7 @@ void SetPID(celsius_t t, heater_id_t h) {
       DWIN_UpdateLCD();
     }
   #endif
-  #if ENABLED(HAS_COLOR_LEDS)
+  #if HAS_COLOR_LEDS
     void LiveLedColorR() { leds.color.r = MenuData.Value; HMI_data.Led_Color = leds.color; leds.update(); }
     void SetLedColorR() { SetIntOnClick(0, 255, leds.color.r, nullptr, LiveLedColorR); }
     void LiveLedColorG() { leds.color.g = MenuData.Value; HMI_data.Led_Color = leds.color; leds.update(); }
@@ -2106,8 +2106,8 @@ void SetPID(celsius_t t, heater_id_t h) {
 
 #if ENABLED(SOUND_MENU_ITEM)
   void SetEnableSound() {
-    ui.buzzer_enabled = !ui.buzzer_enabled;
-    Draw_Chkb_Line(CurrentMenu->line(), ui.buzzer_enabled);
+    ui.sound_on = !ui.sound_on;
+    Draw_Chkb_Line(CurrentMenu->line(), ui.sound_on);
     DWIN_UpdateLCD();
   }
 #endif
@@ -2304,7 +2304,7 @@ TERN(HAS_ONESTEP_LEVELING, float, void) Tram(uint8_t point) {
       inLev = true;
       zval = probe.probe_at_point(xpos, ypos, PROBE_PT_STOW);
       if (isnan(zval))
-        ui.set_status(F("Position Not Reachable, check offsets"));
+        LCD_MESSAGE_F("Position Not Reachable, check offsets");
       else {
         sprintf_P(cmd, PSTR("X:%s, Y:%s, Z:%s"),
           dtostrf(xpos, 1, 1, str_1),
@@ -2336,7 +2336,7 @@ void TramC () { Tram(4); }
   void Trammingwizard() {
     bed_mesh_t zval = {0};
     if (HMI_data.FullManualTramming) {
-      ui.set_status(F("Disable manual tramming"));
+      LCD_MESSAGE_F("Disable manual tramming");
       return;
     }
     zval[0][0] = Tram(0);
@@ -2638,7 +2638,7 @@ void onDrawLanguage(MenuItemClass* menuitem, int8_t line) {
 #endif
 
 #if ENABLED(SOUND_MENU_ITEM)
-  void onDrawEnableSound(MenuItemClass* menuitem, int8_t line) { onDrawChkbMenu(menuitem, line, ui.buzzer_enabled); }
+  void onDrawEnableSound(MenuItemClass* menuitem, int8_t line) { onDrawChkbMenu(menuitem, line, ui.sound_on); }
 #endif
 
 #ifdef BLTOUCH_HS_MODE
@@ -3260,7 +3260,7 @@ void Draw_GetColor_Menu() {
         #if !BOTH(CASE_LIGHT_MENU, CASE_LIGHT_USE_NEOPIXEL)
           MENU_ITEM(ICON_LedControl, GET_TEXT_F(MSG_LEDS), onDrawLedStatus, SetLedStatus);
         #endif
-        #if (HAS_COLOR_LEDS)
+        #if HAS_COLOR_LEDS
           EDIT_ITEM(ICON_LedControl, GET_TEXT_F(MSG_COLORS_RED), onDrawPInt8Menu, SetLedColorR, &leds.color.r);
           EDIT_ITEM(ICON_LedControl, GET_TEXT_F(MSG_COLORS_GREEN), onDrawPInt8Menu, SetLedColorG, &leds.color.g);
           EDIT_ITEM(ICON_LedControl, GET_TEXT_F(MSG_COLORS_BLUE), onDrawPInt8Menu, SetLedColorB, &leds.color.b);

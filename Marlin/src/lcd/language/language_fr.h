@@ -76,7 +76,6 @@ namespace Language_fr {
   LSTR MSG_HOME_OFFSET_J                  = _UxGT("Décal. origine ") STR_J;
   LSTR MSG_HOME_OFFSET_K                  = _UxGT("Décal. origine ") STR_K;
   LSTR MSG_HOME_OFFSETS_APPLIED           = _UxGT("Décalages appliqués");
-  LSTR MSG_SET_ORIGIN                     = _UxGT("Régler origine");
   LSTR MSG_TRAMMING_WIZARD                = _UxGT("Assistant Molettes");
   LSTR MSG_SELECT_ORIGIN                  = _UxGT("Molette du lit"); // Not a selection of the origin
   LSTR MSG_LAST_VALUE_SP                  = _UxGT("Ecart origine ");
@@ -335,7 +334,7 @@ namespace Language_fr {
   LSTR MSG_ADVANCE_K_E                    = _UxGT("Avance K *");
   LSTR MSG_BRIGHTNESS                     = _UxGT("Luminosité LCD");
   LSTR MSG_CONTRAST                       = _UxGT("Contraste LCD");
-  LSTR MSG_LCD_BKL_TIMEOUT                = _UxGT("Veille LCD (s)");
+  LSTR MSG_LCD_TIMEOUT_SEC                = _UxGT("Veille LCD (s)");
   LSTR MSG_BRIGHTNESS_OFF                 = _UxGT("Éteindre l'écran LCD");
   LSTR MSG_STORE_EEPROM                   = _UxGT("Enregistrer config.");
   LSTR MSG_LOAD_EEPROM                    = _UxGT("Charger config.");
