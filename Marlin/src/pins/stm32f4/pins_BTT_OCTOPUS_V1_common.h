@@ -243,11 +243,12 @@
 #define HEATER_0_PIN                        PA2   // Heater0
 #define HEATER_1_PIN                        PA3   // Heater1
 #define HEATER_2_PIN                        PB10  // Heater2  
-#define HEATER_3_PIN                        PB11  // Heater3  
+#define HEATER_3_PIN                        PB11  // Heater3  [ CASE_LIGHT_PIN ]
 
-#define FAN_PIN                             PA8   // Fan0   FAN1_PIN
-#define FAN1_PIN                            PE5   // Fan1   PART COOLING FAN EXT 1
-#define FAN2_PIN                            PD12  // Fan2   PART COOLING FAN EXT 2
+#define FAN_PIN                             PA8   // Fan0   PART COOLING FAN EXT 0
+#define FAN1_PIN                            PE5   // Fan1   EXTRUDER COOLING FAN
+#define FAN2_PIN                            PD12  // Fan2   PART COOLING FAN EXT 1
+
 #define FAN3_PIN                            PD13  // Fan3   CONTROLLER_FAN_PIN
 #define FAN4_PIN                            PD14  // Fan4   CHAMBER_AUTO_FAN_PIN
 #define FAN5_PIN                            PD15  // Fan5

@@ -30,7 +30,7 @@
  * Marlin bugfix-2.0.x
  * Compiled version identifier
  ************************************/
-#define COMPILE_VERSION "08" 
+#define COMPILE_VERSION "10" 
 
 #define SHORT_BUILD_VERSION "bugfix-2.0.9.3-" COMPILE_VERSION
 #define STRING_CONFIG_H_AUTHOR "BDM"                    // Who made the changes.
@@ -45,11 +45,28 @@
  * !! BigTreeTech Octopus Pro V1.0 (STM32F429ZGT6 ARM Cortex-M4)
  * !! GitHub: kamikazebdm@gmail.com -> brendon@m2mwireless.com ( collaborator )
  *               
- * V08  03/18/2022 08:20
+ * V10  05/11/2022 12:00
+ * 
+ *      UPDATES: MARLIN upstream bugfix-2.0(.9.3)  05/11/2022
+ * 
+ *          #define RX_BUFFER_SIZE 1024
+ *               #define SERIAL_XON_XOFF
+ *          #define TX_BUFFER_SIZE 64
+ * 
+ * 
+ * V09  03/21/2022 18:11
+ * 
+ *          #define Y_CURRENT_HOME  ( Y_CURRENT / 2 )
+ *          #define Y_CURRENT_HOME  ( Y_CURRENT / 2 )
+ * 
+ * V08  03/18/2022 13:06
  * 
  *      UPDATES: MARLIN upstream bugfix-2.0(.9.3)  03/18/2022
  *            //#define SQUARE_WAVE_STEPPING
- *          
+ *            #define ADAPTIVE_STEP_SMOOTHING
+ *            M301 E0 P11.0386 I0.7342 D41.4886
+ *            M301 E1 P20.1556 I1.5856 D64.0546  
+ *            M304 P146.2618 I28.5835 D498.9479
  * 
  * V07  03/04/2022 12:42
  * 

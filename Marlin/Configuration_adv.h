@@ -645,7 +645,7 @@
  * the fan will turn on when any selected extruder is above the threshold.
  */
 #define E0_AUTO_FAN_PIN FAN1_PIN
-#define E1_AUTO_FAN_PIN -1
+#define E1_AUTO_FAN_PIN FAN1_PIN
 #define E2_AUTO_FAN_PIN -1
 #define E3_AUTO_FAN_PIN -1
 #define E4_AUTO_FAN_PIN -1
@@ -760,6 +760,8 @@
 // @section extras
 
 //#define Z_LATE_ENABLE // Enable Z the last moment. Needed if your Z driver overheats.
+
+
 
 // Employ an external closed loop controller. Override pins here if needed.
 //#define EXTERNAL_CLOSED_LOOP_CONTROLLER
@@ -899,8 +901,8 @@
 
 //#define SENSORLESS_BACKOFF_MM  { 2, 2, 0 }  // (mm) Backoff from endstops before sensorless homing
 
-#define HOMING_BUMP_MM      { 5, 5, 2 }       // (mm) Backoff from endstops after first bump
-#define HOMING_BUMP_DIVISOR { 2, 2, 4 }       // Re-Bump Speed Divisor (Divides the Homing Feedrate)
+#define HOMING_BUMP_MM      { 5, 5, 3 }       // (mm) Backoff from endstops after first bump
+#define HOMING_BUMP_DIVISOR { 3, 3, 5 }       // Re-Bump Speed Divisor (Divides the Homing Feedrate)
 
 //#define HOMING_BACKOFF_POST_MM { 2, 2, 2 }  // (mm) Backoff from endstops after homing
 
@@ -1062,6 +1064,16 @@
   #define HOME_AFTER_G34
 #endif
 
+
+
+
+
+
+
+
+
+
+
 //
 // Add the G35 command to read bed corners to help adjust screws. Requires a bed probe.
 //
@@ -1128,8 +1140,10 @@
 #define DEFAULT_MINIMUMFEEDRATE       0.0     // (mm/s) Minimum feedrate. Set with M205 S.
 #define DEFAULT_MINTRAVELFEEDRATE     0.0     // (mm/s) Minimum travel feedrate. Set with M205 T.
 
+
 // Minimum time that a segment needs to take as the buffer gets emptied
 #define DEFAULT_MINSEGMENTTIME        20000   // (µs) Set with M205 B.
+
 
 // Slow down the machine if the lookahead buffer is (by default) half full.
 // Increase the slowdown divisor for larger buffer sizes.
@@ -1137,6 +1151,8 @@
 #if ENABLED(SLOWDOWN)
   #define SLOWDOWN_DIVISOR 2
 #endif
+
+
 
 /**
  * XY Frequency limit
@@ -1153,6 +1169,17 @@
 // of the buffer and all stops. This should not be much greater than zero and should only be changed
 // if unwanted behavior is observed on a user's machine when running at very slow speeds.
 #define MINIMUM_PLANNER_SPEED 0.05 // (mm/s)
+
+
+
+
+
+
+
+
+
+
+
 
 //
 // Backlash Compensation
@@ -1259,7 +1286,7 @@
  * vibration and surface artifacts. The algorithm adapts to provide the best possible step smoothing at the
  * lowest stepping frequencies.
  */
-//#define ADAPTIVE_STEP_SMOOTHING
+#define ADAPTIVE_STEP_SMOOTHING
 
 /**
  * Custom Microstepping
@@ -2391,18 +2418,18 @@
 // For debug-echo: 128 bytes for the optimal speed.
 // Other output doesn't need to be that speedy.
 // :[0, 2, 4, 8, 16, 32, 64, 128, 256]
-#define TX_BUFFER_SIZE 32
+#define TX_BUFFER_SIZE 64
 
 // Host Receive Buffer Size
 // Without XON/XOFF flow control (see SERIAL_XON_XOFF below) 32 bytes should be enough.
 // To use flow control, set this buffer size to at least 1024 bytes.
 // :[0, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048]
-//#define RX_BUFFER_SIZE 1024
+#define RX_BUFFER_SIZE 1024
 
 #if RX_BUFFER_SIZE >= 1024
   // Enable to have the controller send XON/XOFF control characters to
   // the host to signal the RX buffer is becoming full.
-  //#define SERIAL_XON_XOFF
+  #define SERIAL_XON_XOFF
 #endif
 
 #if ENABLED(SDSUPPORT)
@@ -2634,7 +2661,7 @@
                                                   // This short retract is done immediately, before parking the nozzle.
   #define FILAMENT_CHANGE_UNLOAD_FEEDRATE     10  // (mm/s) Unload filament feedrate. This can be pretty fast.
   #define FILAMENT_CHANGE_UNLOAD_ACCEL        25  // (mm/s^2) Lower acceleration may allow a faster feedrate.
-  #define FILAMENT_CHANGE_UNLOAD_LENGTH      125  // (mm) The length of filament for a complete unload.
+  #define FILAMENT_CHANGE_UNLOAD_LENGTH      130  // (mm) The length of filament for a complete unload.
                                                   //   For Bowden, the full length of the tube and nozzle.
                                                   //   For direct drive, the full length of the nozzle.
                                                   //   Set to 0 for manual unloading.
@@ -2829,8 +2856,8 @@
   #define INTERPOLATE      true
 
   #if AXIS_IS_TMC(X)
-    #define X_CURRENT       880        // (mA) RMS current. Multiply by 1.414 for peak current.
-    #define X_CURRENT_HOME  ( X_CURRENT / 3 )  // (mA) RMS current for sensorless homing
+    #define X_CURRENT       800        // (mA) RMS current. Multiply by 1.414 for peak current.
+    #define X_CURRENT_HOME  ( X_CURRENT / 2 )  // (mA) RMS current for sensorless homing
     #define X_MICROSTEPS     16        // 0..256
     #define X_RSENSE          0.11
     #define X_CHAIN_POS      -1        // -1..0: Not chained. 1: MCU MOSI connected. 2: Next in chain, ...
@@ -2849,8 +2876,8 @@
   #endif
 
   #if AXIS_IS_TMC(Y)
-    #define Y_CURRENT       860
-    #define Y_CURRENT_HOME  ( Y_CURRENT / 3 )
+    #define Y_CURRENT       800
+    #define Y_CURRENT_HOME  ( Y_CURRENT / 2 )
     #define Y_MICROSTEPS     16
     #define Y_RSENSE          0.11
     #define Y_CHAIN_POS      -1
@@ -3160,19 +3187,19 @@
    */
   #define HYBRID_THRESHOLD
 
-  #define X_HYBRID_THRESHOLD     110  // [mm/s]
+  #define X_HYBRID_THRESHOLD     122  // [mm/s]
   #define X2_HYBRID_THRESHOLD    100
-  #define Y_HYBRID_THRESHOLD     110
+  #define Y_HYBRID_THRESHOLD     122
   #define Y2_HYBRID_THRESHOLD    100
-  #define Z_HYBRID_THRESHOLD       10
+  #define Z_HYBRID_THRESHOLD       12
   #define Z2_HYBRID_THRESHOLD      3
   #define Z3_HYBRID_THRESHOLD      3
   #define Z4_HYBRID_THRESHOLD      3
   #define I_HYBRID_THRESHOLD       3
   #define J_HYBRID_THRESHOLD       3
   #define K_HYBRID_THRESHOLD       3
-  #define E0_HYBRID_THRESHOLD     30
-  #define E1_HYBRID_THRESHOLD     30
+  #define E0_HYBRID_THRESHOLD     110
+  #define E1_HYBRID_THRESHOLD     110
   #define E2_HYBRID_THRESHOLD     30
   #define E3_HYBRID_THRESHOLD     30
   #define E4_HYBRID_THRESHOLD     30
@@ -3568,6 +3595,20 @@
   #endif
 #endif
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /**
  * Spindle & Laser control
  *
@@ -3815,6 +3856,13 @@
   //#define FILAMENT_LCD_DISPLAY
 #endif
 
+
+
+
+
+
+
+
 /**
  * Power Monitor
  * Monitor voltage (V) and/or current (A), and -when possible- power (W)
@@ -3837,6 +3885,14 @@
   #define POWER_MONITOR_VOLTS_PER_VOLT  0.077933  // Input voltage to the MCU analog pin per volt - DO NOT apply more than ADC_VREF!
   #define POWER_MONITOR_VOLTAGE_OFFSET  0         // Offset (in volts) applied to the calculated voltage
 #endif
+
+
+
+
+
+
+
+
 
 /**
  * Stepper Driver Anti-SNAFU Protection
@@ -4124,12 +4180,17 @@
   #define HOST_PROMPT_SUPPORT           // Initiate host prompts to get user feedback
   
   #if ENABLED(HOST_PROMPT_SUPPORT)
-    //#define HOST_STATUS_NOTIFICATIONS   // Send some status messages to the host as notifications
+    #define HOST_STATUS_NOTIFICATIONS   // Send some status messages to the host as notifications
   #endif
 
-  //#define HOST_START_MENU_ITEM          // Add a menu item that tells the host to start
-  //#define HOST_SHUTDOWN_MENU_ITEM       // Add a menu item that tells the host to shut down
+  #define HOST_START_MENU_ITEM          // Add a menu item that tells the host to start
+  #define HOST_SHUTDOWN_MENU_ITEM       // Add a menu item that tells the host to shut down
 #endif
+
+
+
+
+
 
 /**
  * Cancel Objects
@@ -4140,6 +4201,8 @@
 #if ENABLED(CANCEL_OBJECTS)
   #define CANCEL_OBJECTS_REPORTING // Emit the current object as a status message
 #endif
+
+
 
 /**
  * I2C position encoders for closed loop control.
